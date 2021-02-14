@@ -189,8 +189,8 @@ class ProposalEnvironment extends Component {
     const material = new THREE.LineBasicMaterial( { color : 0xff0000 } );
 
     // Create the final object to add to the scene
-    const curveObject = new THREE.Line( geometry, material );
-    this.scene.add(curveObject)
+    // const curveObject = new THREE.Line( geometry, material );
+    // this.scene.add(curveObject)
   };
 
   toggleObjectVisibility = (filter) => {
