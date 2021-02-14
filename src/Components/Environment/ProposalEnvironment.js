@@ -17,9 +17,9 @@ const ProposalEnvironmentWrapper = styled.div`
   height: 100
 `;
 
-let Microbes = 'http://dt8c09yje207j.cloudfront.net/Microbes.glb'
-let Text = 'http://dt8c09yje207j.cloudfront.net/Text.glb'
-let Buildings = 'http://dt8c09yje207j.cloudfront.net/Buildings.glb'
+let Microbes = 'https://dt8c09yje207j.cloudfront.net/Microbes.glb'
+let Text = 'https://dt8c09yje207j.cloudfront.net/Text.glb'
+let Buildings = 'https://dt8c09yje207j.cloudfront.net/Buildings.glb'
 class ProposalEnvironment extends Component {
   state = {
     has_loaded: false,
