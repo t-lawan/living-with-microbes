@@ -247,7 +247,7 @@ class ProposalEnvironment extends Component {
   };
 
   onMouseWheel = event => {
-    if (event.deltaY < 0 && this.camPosIndex < 100) {
+    if (event.deltaY < 0 && this.camPosIndex < 99) {
       this.camPosIndex++;
 
       let camPos = this.spline.getPoint(this.camPosIndex / 100);
