@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import { GlobalStyle, TwoColumnSection } from "../Global/global.styles";
 import SideNavbar from "../SideNavbar/SideNavbar";
 import styled from 'styled-components'
+import LoadingPage from "../LoadingPage/LoadingPage";
 
 export const Main = styled.section`
 
@@ -71,6 +72,7 @@ const Layout = props => {
         ]}
       />
       <GlobalStyle />
+      <LoadingPage />
       <Main>{props.children}</Main>
     </>
   );

@@ -4,22 +4,27 @@ import styled from "styled-components";
 const LoadingBarWrapper = styled.div`
   display: ${props => (props.show ? "flex" : "none")};
 
-  height: 100%;
-  flex-direction: column;
-  justify-content: center;
+  /* height: 100%; */
+  /* flex-direction: column;*/
+  justify-content: center; 
   align-items: center;
+  z-index: 100;
+  width: 100%;
+  height: 10%;
+  /* position:relative; */
+
 
 `;
 const LoadingWrapper = styled.div`
-  width: 80%;
-  height: 1rem;
+  width: 100%;
+  height: 0.5rem;
   background: #72869d;
 `;
 const LoadingProgressWrapper = styled.div`
   bottom: 0;
   width: ${props => props.percent};
   height: 100%;
-  background: green;
+  background: lightgrey;
 `;
 const LoadingBar = (props) => {
   let percent = 0;

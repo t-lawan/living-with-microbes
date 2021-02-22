@@ -1,7 +1,8 @@
-import { LOADING, HAS_LOADED, TOGGLE_ANNOTATIONS, TOGGLE_CONTEXT, TOGGLE_DATA } from "./action";
+import { LOADING, HAS_LOADED, TOGGLE_ANNOTATIONS, TOGGLE_CONTEXT, TOGGLE_DATA, IS_LOADING } from "./action";
 
 const initalState = {
   has_loaded: false,
+  is_loading: false,
   loaded: 0.0,
   total: 1.0,
   show_annotations: true,
@@ -15,7 +16,15 @@ export const reducer = (state = initalState, action) => {
       case HAS_LOADED:
         return {
           ...state,
-          has_loaded: true
+          has_loaded: true,
+          loaded: 0.0,
+          total: 1.0,
+          is_loading: false,
+        };
+      case IS_LOADING:
+        return {
+          ...state,
+          is_loading: true,
         };
       case LOADING:
         return {

@@ -7,6 +7,7 @@ import LoadingBar from "../LoadingBar/LoadingBar.js";
 import styled from "styled-components";
 import { Colours } from "../Global/global.styles.js";
 import { EnvironmentFilter } from "../../Utility/Misc.js";
+import { loading, hasLoaded, isLoading } from "../../Store/action.js";
 
 const style = {
     height: '100%'
@@ -115,21 +116,22 @@ class ProposalEnvironment extends Component {
 
   setupLoadingManager = () => {
     this.manager = new THREE.LoadingManager();
+    this.manager.onStart = this.loadStart;
     this.manager.onProgress = this.loadProgressing;
     this.manager.onLoad = this.loadFinished;
   };
 
+  loadStart = (url, itemsLoaded, itemsTotal) => {
+    this.props.isLoading();
+    this.props.loading(itemsLoaded, itemsTotal);
+  };
+
   loadProgressing = (url, itemsLoaded, itemsTotal) => {
-    this.setState({
-      loaded: itemsLoaded,
-      total: itemsTotal
-    });
+    this.props.loading(itemsLoaded, itemsTotal);
   };
 
   loadFinished = () => {
-    this.setState({
-      has_loaded: true
-    });
+    this.props.hasLoaded();
     this.onWindowResize();
   };
 
@@ -285,14 +287,9 @@ class ProposalEnvironment extends Component {
     return (
       <>
         <ProposalEnvironmentWrapper
-          show={this.state.has_loaded}
+          show={this.props.has_loaded}
           style={style}
           ref={ref => (this.mount = ref)}
-        />
-        <LoadingBar
-          show={!this.state.has_loaded}
-          loaded={this.state.loaded}
-          total={this.state.total}
         />
       </>
     );
@@ -303,10 +300,21 @@ const mapStateToProps = state => {
     show_annotations: state.show_annotations,
     show_context: state.show_context,
     show_data: state.show_data,
+    has_loaded: state.has_loaded,
+    loaded:  state.loaded,
+    total: state.total
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    loading: (loaded, total) => dispatch(loading(loaded, total)),
+    hasLoaded: () => dispatch(hasLoaded()),
+    isLoading: () => dispatch(isLoading())
   };
 };
 
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(ProposalEnvironment);
