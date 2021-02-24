@@ -65,6 +65,10 @@ h1,h2,h3,h4,h5,h6 {
   margin-bottom: 1.45rem;
   font-size: 2.5rem;
   line-height: 1.1;
+  @media (max-width: ${size.tabletL}) {
+    font-size: 2rem;
+
+  }
 }
 h2 {
   margin-bottom: 1.45rem;
@@ -116,8 +120,7 @@ p, li, a{
   font-weight: 100 !important;
   color: ${Colours.dark_grey};
   @media (max-width: ${size.tabletL}) {
-    padding: 1.2rem;
-  font-size: 1.2rem  !important;
+    font-size: 1rem  !important;
 
   }
 }

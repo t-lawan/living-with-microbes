@@ -4,7 +4,7 @@ import Layout from "../Components/Layout/Layout";
 import ProposalEnvironment from "../Components/Environment/ProposalEnvironment";
 import styled from "styled-components";
 import { StyledLinks } from "../Components/SideNavbar/SideNavbar";
-import { Colours } from "../Components/Global/global.styles";
+import { Colours, size } from "../Components/Global/global.styles";
 import TopNavbar from "../Components/TopNavbar/TopNavbar";
 
 const HomeWrapper = styled.div``;
@@ -12,6 +12,11 @@ const HomeWrapper = styled.div``;
 const HomePageSection = styled.div`
   height: 100vh;
   width: 100vw;
+  @media (max-width: ${size.tabletL}) {
+   height: ${props => props.isFullscreenInMobile ?  "100vh" : "auto" };
+
+   padding: 1rem 0;
+  }
 `;
 
 const FlexDiv = styled.div`
@@ -25,17 +30,20 @@ const FlexDiv = styled.div`
 `;
 
 export const Title = styled.h1`
-  /* color: ${Colours.yellow}; */
-  transition: color 0.1s;
-  :hover {
-    /* color: ${Colours.purple}; */
-  }
+  text-align: center;
+  margin: 0;
+  padding: 0;
 `;
 
-const HomePageText = styled.p``;
+const HomePageText = styled.p`
+
+`;
 
 const HomePageTextWrapper = styled.div`
   width: 60%;
+  @media (max-width: ${size.tabletL}) {
+    width: 90%;
+  }
 `;
 
 const HomePageLinksWrapper = styled.div`
@@ -43,23 +51,22 @@ const HomePageLinksWrapper = styled.div`
   flex-direction: row;
   width: 60%;
   justify-content: space-around;
+
+  @media (max-width: ${size.tabletL}) {
+    width: 90%;
+  }
 `;
 
 const HomePageLinks = styled(StyledLinks)`
   font-size: 1.5rem;
-  text-decoration: none;
-  /* color: ${Colours.purple}; */
-  transition: color 0.1s;
-  :hover {
-    /* color: ${Colours.yellow}; */
-  }
+  text-decoration: underline;
 `;
 
 const Home = () => {
   return (
     <Layout>
       <HomeWrapper>
-        <HomePageSection>
+        <HomePageSection isFullscreenInMobile>
           <FlexDiv>
             <Title> With Microbes</Title>
             <HomePageTextWrapper>

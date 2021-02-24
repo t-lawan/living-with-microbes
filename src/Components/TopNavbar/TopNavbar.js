@@ -4,6 +4,7 @@ import styled from "styled-components";
 import {IsPage, PageURls } from "../../Utility/Misc";
 import { StyledLinks } from "../SideNavbar/SideNavbar";
 import { useLocation } from 'react-router-dom'
+import { size } from "../Global/global.styles";
 
 const TopNavbarWrapper = styled.div`
   width: 100vw;
@@ -20,7 +21,10 @@ const LinkWrapper = styled.div`
   width: 100%;
 
   flex-direction: row;
-  justify-content: flex-end
+  justify-content: flex-end;
+  @media (max-width: ${size.tabletL}) {
+    justify-content: center;
+  }
 `;
 
 
