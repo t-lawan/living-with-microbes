@@ -5,6 +5,7 @@ import ProposalEnvironment from "../Components/Environment/ProposalEnvironment";
 import styled from "styled-components";
 import { StyledLinks } from "../Components/SideNavbar/SideNavbar";
 import { Colours } from "../Components/Global/global.styles";
+import TopNavbar from "../Components/TopNavbar/TopNavbar";
 
 const HomeWrapper = styled.div``;
 
@@ -24,10 +25,10 @@ const FlexDiv = styled.div`
 `;
 
 export const Title = styled.h1`
-  color: ${Colours.yellow};
+  /* color: ${Colours.yellow}; */
   transition: color 0.1s;
   :hover {
-    color: ${Colours.purple};
+    /* color: ${Colours.purple}; */
   }
 `;
 
@@ -47,10 +48,10 @@ const HomePageLinksWrapper = styled.div`
 const HomePageLinks = styled(StyledLinks)`
   font-size: 1.5rem;
   text-decoration: none;
-  color: ${Colours.purple};
+  /* color: ${Colours.purple}; */
   transition: color 0.1s;
   :hover {
-    color: ${Colours.yellow};
+    /* color: ${Colours.yellow}; */
   }
 `;
 
@@ -85,6 +86,7 @@ const Home = () => {
         </HomePageSection>
 
         <HomePageSection>
+          <TopNavbar />
           <FlexDiv>
             <HomePageTextWrapper>
               <Title> The Project</Title>

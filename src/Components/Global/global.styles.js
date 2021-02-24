@@ -21,6 +21,7 @@ export const Colours = {
   purple: '#a841f4',
   yellow: '#E4EE3F',
   grey: '#CCD6D7',
+  dark_grey: '	#707070',
   green : 'hsl(115, 100%, 42%)'
 }
 
@@ -53,7 +54,7 @@ h1,h2,h3,h4,h5,h6 {
     padding-right: 0;
     padding-top: 0;
     font-weight: 100;
-    color: inherit;
+    color: ${Colours.dark_grey};
     }
   a {
     text-decoration: underline;
@@ -101,7 +102,7 @@ img {
   padding-top: 0;
   margin-bottom: 1.45rem;
 }
-p, li{
+p, li, a{
   margin-left: 0;
   margin-right: 0;
   margin-top: 0;
@@ -113,6 +114,7 @@ p, li{
   font-size: 1.5rem  !important;
   line-height: 1.3;
   font-weight: 100 !important;
+  color: ${Colours.dark_grey};
   @media (max-width: ${size.tabletL}) {
     padding: 1.2rem;
   font-size: 1.2rem  !important;
@@ -124,7 +126,9 @@ p {
   line-height: 1.35;
   font-size: 1.05rem;
   margin-bottom: 1.5rem;
+  
 }
+
 
 `;
 

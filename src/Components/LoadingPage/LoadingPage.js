@@ -57,7 +57,7 @@ const LoadingPage = props => {
           ) : null}
         </TextWrapper>
         <LoadingBarWrapper>
-          <LoadingBar show={props.is_loading} />
+          <LoadingBar show={true} loaded={props.loaded} total={props.total}/>
         </LoadingBarWrapper>
       </ContentWrapper>
     </LoadingPageWrapper>

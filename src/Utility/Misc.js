@@ -12,6 +12,10 @@ export const PageURls = {
     PROPOSAL: {
         id: 'PROPOSAL',
         url: '/proposal',
+    },
+    HOME: {
+        id: 'HOME',
+        url: '/',
     }
 }
 
@@ -24,7 +28,10 @@ export const IsPage = (page_id, pathname) => {
             break;
         case PageURls.PROPOSAL.id:
             response = (pathname === PageURls.PROPOSAL.url)
-            break;      
+            break;     
+        case PageURls.HOME.id:
+            response = (pathname === PageURls.HOME.url)
+            break;   
     }
     return response;
 }

@@ -14,10 +14,10 @@ const SideNavbarWrapper = styled.div`
 export const StyledLinks = styled(Link)`
   display: block;
   text-decoration: none;
-  color: ${Colours.purple};
+  /* color: ${Colours.purple};
   :hover {
     color: ${Colours.green};
-  }
+  } */
 `;
 
 const LinkWrapper = styled.div`
@@ -27,11 +27,11 @@ const LinkWrapper = styled.div`
 
 const FilterLink = styled.span`
   display: block;
-  color: ${props => (props.isSelected ? "pink" : Colours.purple)};
+  /* color: ${props => (props.isSelected ? "pink" : Colours.purple)}; */
 
-  :hover {
+  /* :hover {
     color: ${Colours.green};
-  }
+  } */
 `
 
 const FilterWrapper = styled.div`
