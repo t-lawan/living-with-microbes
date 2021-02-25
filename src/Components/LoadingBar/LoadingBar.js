@@ -10,8 +10,8 @@ const LoadingBarWrapper = styled.div`
   align-items: center;
   z-index: 100;
   width: 100%;
-  height: 10%;
-
+  height: 0.3rem;
+  /* border: 1px solid ${Colours.dark_grey}; */
 
 `;
 const LoadingWrapper = styled.div`

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import * as THREE from 'three';
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
+import { Colours } from "../Global/global.styles";
 const style = {
     height: 1000 // we can control scene size by setting container dimensions
 };
@@ -39,6 +40,8 @@ class TestEnvironment extends Component {
         // https://threejs.org/docs/#examples/controls/OrbitControls
         this.controls = new OrbitControls( this.camera, this.mount );
         this.renderer = new THREE.WebGLRenderer();
+        this.renderer.setClearColor(Colours.grey);
+
         this.renderer.setSize( width, height );
         this.mount.appendChild( this.renderer.domElement ); // mount using React ref
     };
@@ -54,7 +57,9 @@ class TestEnvironment extends Component {
             side: THREE.DoubleSide,
             flatShading: true
         } );
+        
         this.cube = new THREE.Mesh( geometry, material );
+        this.cube.position.set(0, 2.5, 0)
         this.scene.add( this.cube );
 
         const lights = [];

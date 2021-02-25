@@ -2,13 +2,17 @@ import React from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { Colours } from "../Global/global.styles";
+import { Colours, size } from "../Global/global.styles";
 import { toggleAnnotations, toggleData, toggleContext } from "../../Store/action";
 import { useLocation } from 'react-router-dom'
 import { IsPage, PageURls } from "../../Utility/Misc";
 const SideNavbarWrapper = styled.div`
   height: 100vh;
   padding: 1rem;
+  @media (max-width: ${size.tabletL}) {
+    padding: 0.5rem;
+
+  }
 `;
 
 export const StyledLinks = styled(Link)`
@@ -27,7 +31,9 @@ const LinkWrapper = styled.div`
 
 const FilterLink = styled.span`
   display: block;
-  /* color: ${props => (props.isSelected ? "pink" : Colours.purple)}; */
+  text-decoration: underline;
+
+  text-decoration: ${props => (props.isSelected ? "underline" : "none")};
 
   /* :hover {
     color: ${Colours.green};
@@ -46,14 +52,14 @@ const SideNavbar = props => {
     <SideNavbarWrapper>
       <LinkWrapper>
       <FilterWrapper>
-        <FilterLink onClick={props.toggleContext} isSelected={props.show_context}> Context </FilterLink>
-        <FilterLink onClick={props.toggleAnnotations} isSelected={props.show_annotations}> Annotations </FilterLink>
-        <FilterLink onClick={props.toggleData} isSelected={props.show_data}> Data </FilterLink>
+        <FilterLink onClick={props.toggleContext} isSelected={props.show_context}> context </FilterLink>
+        <FilterLink onClick={props.toggleAnnotations} isSelected={props.show_annotations}> annotations </FilterLink>
+        <FilterLink onClick={props.toggleData} isSelected={props.show_data}> data </FilterLink>
       </FilterWrapper>
 
-      {!IsPage(PageURls.RESEARCH.id, location.pathname) ?  <StyledLinks to={PageURls.RESEARCH.url}>Go to Research</StyledLinks> : null}
-      {!IsPage(PageURls.PROPOSAL.id, location.pathname) ?  <StyledLinks to={PageURls.PROPOSAL.url}>Go to Proposal</StyledLinks> : null}
-        <StyledLinks to={"/"}>Home</StyledLinks>
+      {!IsPage(PageURls.RESEARCH.id, location.pathname) ?  <StyledLinks to={PageURls.RESEARCH.url}>go to now</StyledLinks> : null}
+      {!IsPage(PageURls.PROPOSAL.id, location.pathname) ?  <StyledLinks to={PageURls.PROPOSAL.url}>go to future</StyledLinks> : null}
+        <StyledLinks to={"/"}>about</StyledLinks>
       </LinkWrapper>
     </SideNavbarWrapper>
   );

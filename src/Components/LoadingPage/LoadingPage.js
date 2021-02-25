@@ -22,8 +22,11 @@ const ContentWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+
   align-items: center;
+  @media (max-width: ${size.tabletL}) {
+  }
 `;
 
 const TextWrapper = styled.div`
@@ -39,6 +42,7 @@ const LoadingBarWrapper = styled.div`
   width: 60%;
   @media (max-width: ${size.tabletL}) {
     width: 90%;
+    padding-bottom: 1rem;
   }
 `;
 
@@ -50,11 +54,10 @@ const Text = styled.p`
 
 const LoadingPage = props => {
   let location = useLocation();
-
   return (
     <LoadingPageWrapper show={props.is_loading}>
       <ContentWrapper>
-        <TopNavbar />
+        <TopNavbar isOnLoadingPage={true} />
 
         <TextWrapper>
           {IsPage(PageURls.RESEARCH.id, location.pathname) ? (
@@ -107,6 +110,8 @@ const mapStateToProps = state => {
     total: state.total
   };
 };
+
+
 
 export default connect(
   mapStateToProps,

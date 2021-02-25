@@ -5,6 +5,7 @@ import {IsPage, PageURls } from "../../Utility/Misc";
 import { StyledLinks } from "../SideNavbar/SideNavbar";
 import { useLocation } from 'react-router-dom'
 import { size } from "../Global/global.styles";
+import { stopLoading } from "../../Store/action";
 
 const TopNavbarWrapper = styled.div`
   width: 100vw;
@@ -32,13 +33,17 @@ const LinkWrapper = styled.div`
 const TopNavbar = props => {
 
 let location = useLocation();
-  
+  let onClick =() =>{
+    if(props.isOnLoadingPage) {
+      props.stopLoading()
+    }
+  }
   return (
     <TopNavbarWrapper>
       <LinkWrapper>
-         <TopNavbarLink to={PageURls.RESEARCH.url} isSelected={IsPage(PageURls.RESEARCH.id, location.pathname)}>now</TopNavbarLink>
-         <TopNavbarLink to={PageURls.PROPOSAL.url} isSelected={IsPage(PageURls.PROPOSAL.id, location.pathname)}>future</TopNavbarLink> 
-        <TopNavbarLink to={"/"} isSelected={IsPage(PageURls.HOME.id, location.pathname)}>about</TopNavbarLink>
+         <TopNavbarLink to={PageURls.RESEARCH.url} isSelected={IsPage(PageURls.RESEARCH.id, location.pathname)} onClick={() => onClick()}>now</TopNavbarLink>
+         <TopNavbarLink to={PageURls.PROPOSAL.url} isSelected={IsPage(PageURls.PROPOSAL.id, location.pathname)} onClick={() => onClick()}>future</TopNavbarLink> 
+        <TopNavbarLink to={"/"} isSelected={IsPage(PageURls.HOME.id, location.pathname)} onClick={() => onClick()}>about</TopNavbarLink>
       </LinkWrapper>
     </TopNavbarWrapper>
   );
@@ -52,8 +57,12 @@ const mapStateToProps = state => {
   };
 };
 
-
+const mapDispatchToProps = dispatch => {
+  return {
+    stopLoading: () => dispatch(stopLoading()),
+  };
+};
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(TopNavbar);

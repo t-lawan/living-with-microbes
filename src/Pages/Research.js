@@ -8,7 +8,7 @@ const Research = () => {
 
   return (
     <TwoColumnLayout>
-       <p> Research</p>
+        <TestEnvironment />
     </TwoColumnLayout>
   );
 };
