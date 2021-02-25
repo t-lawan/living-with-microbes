@@ -8,24 +8,15 @@ import { Colours, size } from "../Components/Global/global.styles";
 import TopNavbar from "../Components/TopNavbar/TopNavbar";
 
 const HomeWrapper = styled.div`
-  ::-webkit-scrollbar {
-  width: 10px;
-  @media (max-width: ${size.tablet}) {
-    width: 7px;
-  }
-  }
-  ::-webkit-scrollbar-thumb {
-  background: rgb(54,54,82); 
-}
-`
+`;
 
 const HomePageSection = styled.div`
   height: 100vh;
   width: 100vw;
   @media (max-width: ${size.tabletL}) {
-   height: ${props => props.isFullscreenInMobile ?  "100vh" : "auto" };
+    height: ${props => (props.isFullscreenInMobile ? "100vh" : "auto")};
 
-   padding: 1rem 0;
+    padding: 1rem 0;
   }
 `;
 
@@ -45,9 +36,7 @@ export const Title = styled.h1`
   padding: 0;
 `;
 
-const HomePageText = styled.p`
-
-`;
+const HomePageText = styled.p``;
 
 const HomePageTextWrapper = styled.div`
   width: 60%;

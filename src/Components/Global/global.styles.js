@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
-import NHaasGroteskDSPro from '../../Assets/Fonts/NHaasGroteskDSPro-55Rg.ttf'
+import NHaasGroteskDSPro from "../../Assets/Fonts/NHaasGroteskDSPro-55Rg.ttf";
 export const size = {
   mobileS: "320px",
   mobileM: "420px",
@@ -16,14 +16,13 @@ export const size = {
   desktop: "2260px"
 };
 
-
 export const Colours = {
-  purple: '#a841f4',
-  yellow: '#E4EE3F',
-  grey: '#CCD6D7',
-  dark_grey: '	#707070',
-  green : 'hsl(115, 100%, 42%)'
-}
+  purple: "#a841f4",
+  yellow: "#E4EE3F",
+  grey: "#CCD6D7",
+  dark_grey: "	#707070",
+  green: "hsl(115, 100%, 42%)"
+};
 
 export const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -35,6 +34,17 @@ export const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
+    ::-webkit-scrollbar {
+    width: 10px;
+    @media (max-width: ${size.tablet}) {
+      width: 7px;
+    }
+overflow-y: hidden;
+
+  }
+  ::-webkit-scrollbar-thumb {
+    background: ${Colours.dark_grey};
+  }
     }
 
 html, body {
@@ -140,7 +150,4 @@ export const TwoColumnSection = styled.div`
   grid-template-columns: 1fr 4fr;
   /* grid-column-gap: 1rem; */
   height: 100vh;
-`
-
-
-
+`;
