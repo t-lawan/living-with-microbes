@@ -40,6 +40,8 @@ const TextWrapper = styled.div`
 
 const LoadingBarWrapper = styled.div`
   width: 60%;
+  padding-bottom: 2rem;
+
   @media (max-width: ${size.tabletL}) {
     width: 90%;
     padding-bottom: 1rem;

@@ -7,7 +7,17 @@ import { StyledLinks } from "../Components/SideNavbar/SideNavbar";
 import { Colours, size } from "../Components/Global/global.styles";
 import TopNavbar from "../Components/TopNavbar/TopNavbar";
 
-const HomeWrapper = styled.div``;
+const HomeWrapper = styled.div`
+  ::-webkit-scrollbar {
+  width: 10px;
+  @media (max-width: ${size.tablet}) {
+    width: 7px;
+  }
+  }
+  ::-webkit-scrollbar-thumb {
+  background: rgb(54,54,82); 
+}
+`
 
 const HomePageSection = styled.div`
   height: 100vh;
