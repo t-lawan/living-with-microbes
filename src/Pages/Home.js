@@ -1,7 +1,5 @@
 import * as React from "react";
-import TestEnvironment from "../Components/Environment/TestEnvironment";
 import Layout from "../Components/Layout/Layout";
-import ProposalEnvironment from "../Components/Environment/ProposalEnvironment";
 import styled from "styled-components";
 import { StyledLinks } from "../Components/SideNavbar/SideNavbar";
 import { Colours, size } from "../Components/Global/global.styles";

@@ -3,7 +3,7 @@ import * as THREE from 'three';
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
 import { Colours } from "../Global/global.styles";
 const style = {
-    height: 1000 // we can control scene size by setting container dimensions
+    height: '100vh' // we can control scene size by setting container dimensions
 };
 
 class TestEnvironment extends Component {
@@ -40,7 +40,7 @@ class TestEnvironment extends Component {
         // https://threejs.org/docs/#examples/controls/OrbitControls
         this.controls = new OrbitControls( this.camera, this.mount );
         this.renderer = new THREE.WebGLRenderer();
-        this.renderer.setClearColor(Colours.grey);
+        this.renderer.setClearColor(Colours.yellow);
 
         this.renderer.setSize( width, height );
         this.mount.appendChild( this.renderer.domElement ); // mount using React ref

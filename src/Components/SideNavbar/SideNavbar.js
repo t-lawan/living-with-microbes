@@ -52,9 +52,15 @@ const SideNavbar = props => {
     <SideNavbarWrapper>
       <LinkWrapper>
       <FilterWrapper>
-        <FilterLink onClick={props.toggleContext} isSelected={props.show_context}> context </FilterLink>
+        {IsPage(PageURls.PROPOSAL.id, location.pathname) ? (
+          <>
+          <FilterLink onClick={props.toggleContext} isSelected={props.show_context}> context </FilterLink>
         <FilterLink onClick={props.toggleAnnotations} isSelected={props.show_annotations}> annotations </FilterLink>
         <FilterLink onClick={props.toggleData} isSelected={props.show_data}> data </FilterLink>
+          </>
+        ) : null}
+
+
       </FilterWrapper>
 
       {!IsPage(PageURls.RESEARCH.id, location.pathname) ?  <StyledLinks to={PageURls.RESEARCH.url}>go to now</StyledLinks> : null}
