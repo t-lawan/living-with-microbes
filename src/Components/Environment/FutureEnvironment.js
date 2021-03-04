@@ -116,6 +116,9 @@ class FutureEnvironment extends Component {
     this.manager.onStart = this.loadStart;
     this.manager.onProgress = this.loadProgressing;
     this.manager.onLoad = this.loadFinished;
+    this.manager.onError = (url) => {
+      console.log(url+ ' failed')
+    }
   };
 
   loadStart = (url, itemsLoaded, itemsTotal) => {

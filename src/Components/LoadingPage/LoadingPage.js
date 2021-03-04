@@ -36,6 +36,11 @@ const TextWrapper = styled.div`
     width: 90%;
     margin-top: 2rem;
   }
+
+  @media (max-width: ${size.mobileM}) {
+    width: 90%;
+    margin-top: 0.5rem;
+  }
 `;
 
 const LoadingBarWrapper = styled.div`
