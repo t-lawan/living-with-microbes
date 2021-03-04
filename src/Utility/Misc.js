@@ -1,13 +1,23 @@
 export const EnvironmentFilter = {
     CONTEXT: 'CONTEXT',
     ANNOTATIONS: 'ANNOTATIONS',
-    DATA: 'DATA'
+    DATA: 'DATA',
+    FUTURE_STORIES: 'FUTURE_STORIES',
+    NOW_STORIES: 'NOW_STORIES',
 }
 
 export const PageURls = {
     RESEARCH: {
         id: 'RESEARCH',
         url: '/research',
+    },
+    NOW: {
+        id: 'NOW',
+        url: '/now',
+    },
+    FUTURE: {
+        id: 'FUTURE',
+        url: '/future',
     },
     PROPOSAL: {
         id: 'PROPOSAL',
@@ -31,7 +41,13 @@ export const IsPage = (page_id, pathname) => {
             break;     
         case PageURls.HOME.id:
             response = (pathname === PageURls.HOME.url)
-            break;   
+            break;  
+        case PageURls.NOW.id:
+            response = (pathname === PageURls.NOW.url)
+            break; 
+        case PageURls.FUTURE.id:
+            response = (pathname === PageURls.FUTURE.url)
+            break; 
     }
     return response;
 }

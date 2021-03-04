@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { StyledLinks } from "../Components/SideNavbar/SideNavbar";
 import { Colours, size } from "../Components/Global/global.styles";
 import TopNavbar from "../Components/TopNavbar/TopNavbar";
+import { PageURls } from "../Utility/Misc";
 
 const HomeWrapper = styled.div`
 `;
@@ -77,11 +78,11 @@ const Home = () => {
               </HomePageText>
             </HomePageTextWrapper>
             <HomePageLinksWrapper>
-              <HomePageLinks to={"/research"}>
+              <HomePageLinks to={PageURls.NOW.url}>
                 {" "}
                 explore where we are now
               </HomePageLinks>
-              <HomePageLinks to={"/proposal"}>
+              <HomePageLinks to={PageURls.FUTURE.url}>
                 {" "}
                 explore a possible future
               </HomePageLinks>

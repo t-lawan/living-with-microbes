@@ -8,7 +8,7 @@ import styled from "styled-components";
 import { Colours } from "../Global/global.styles.js";
 import { EnvironmentFilter } from "../../Utility/Misc.js";
 import { loading, hasLoaded, isLoading } from "../../Store/action.js";
-
+// import Buildings from '../../Assets/Models/proposalscenefinaljoinmat.glb'
 const style = {
     height: '100%'
 }
@@ -18,10 +18,10 @@ const ProposalEnvironmentWrapper = styled.div`
   height: 100
 `;
 
-let Microbes = 'https://dt8c09yje207j.cloudfront.net/Microbes.glb'
-let Text = 'https://dt8c09yje207j.cloudfront.net/Text.glb'
-let Buildings = 'https://dt8c09yje207j.cloudfront.net/Buildings.glb'
-class ProposalEnvironment extends Component {
+let Text = 'https://dt8c09yje207j.cloudfront.net/proposaltext.glb'
+let Buildings = 'https://dt8c09yje207j.cloudfront.net/proposalscenefinaljoinmat.glb'
+// let Buildings = 'https://dt8c09yje207j.cloudfront.net/Buildings.glb'
+class FutureEnvironment extends Component {
   state = {
     has_loaded: false,
     loaded: 0.0,
@@ -34,16 +34,8 @@ class ProposalEnvironment extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if(prevProps.show_annotations !== this.props.show_annotations) {
-      this.toggleObjectVisibility(EnvironmentFilter.ANNOTATIONS)
-    }
-
-    if(prevProps.show_context !== this.props.show_context) {
-      this.toggleObjectVisibility(EnvironmentFilter.CONTEXT)
-    }
-
-    if(prevProps.show_data !== this.props.show_data) {
-      this.toggleObjectVisibility(EnvironmentFilter.DATA)
+    if(prevProps.show_future_stories !== this.props.show_future_stories) {
+      this.toggleObjectVisibility(EnvironmentFilter.FUTURE_STORIES)
     }
   }
 
@@ -61,9 +53,10 @@ class ProposalEnvironment extends Component {
     this.setupScene();
     this.setupLights();
     this.setupLoadingManager();
-    this.setupMicrobes();
-    this.setupText();
+    // this.setupMicrobes(); 
     this.setupBuildings();
+
+    this.setupText();
     this.setupCameraCurve();
     this.addEventListeners();
   };
@@ -71,6 +64,7 @@ class ProposalEnvironment extends Component {
   setupScene = () => {
     // get container dimensions and use them for scene sizing
     this.scene = new THREE.Scene();
+    this.scene.fog = new THREE.Fog(0xBABAB8, 30, 40);
     this.setupCamera();
     // this.setupControl();
     this.setupRenderer();
@@ -97,17 +91,20 @@ class ProposalEnvironment extends Component {
       0.1, // near plane
       1000 // far plane
     );
-    this.camera.position.z = 20; // is used here to set some distance from a cube that is located at z = 0
+    this.camera.position.x = 0.5;
+    this.camera.position.y = -1;
+    this.camera.position.z = 10;
+    // this.camera.position.z = 20; // is used here to set some distance from a cube that is located at z = 0
   };
 
   setupLights = () => {
-    let light = new THREE.AmbientLight(0xffffff, 10);
+    let light = new THREE.AmbientLight(0xffffff, 1.5);
     this.scene.add(light);
 
-    let light2 = new THREE.PointLight(0xffffff, 10);
+    let light2 = new THREE.PointLight(0xffffff, 0);
     this.scene.add(light2);
 
-    let light3 = new THREE.DirectionalLight(0xffffff, 1);
+    let light3 = new THREE.DirectionalLight(0xffffff, 0);
     light3.position.z = 10;
     light3.position.x = 10;
     light3.position.y = 10;
@@ -136,27 +133,13 @@ class ProposalEnvironment extends Component {
     this.onWindowResize();
   };
 
-  setupMicrobes = () => {
-    const loader = new GLTFLoader(this.manager);
-    let mesh = new THREE.Object3D();
-
-    loader.load(Microbes, gltf => {
-      mesh = gltf.scene;
-      mesh.name = EnvironmentFilter.DATA;
-      this.scene.add(mesh);
-      mesh.position.z = 0;
-    });
-
-    mesh.visible = true;
-  };
-
   setupText = () => {
     const loader = new GLTFLoader(this.manager);
     let mesh = new THREE.Object3D();
 
     loader.load(Text, gltf => {
       mesh = gltf.scene;
-      mesh.name = EnvironmentFilter.ANNOTATIONS;
+      mesh.name = EnvironmentFilter.FUTURE_STORIES;
       this.scene.add(mesh);
       mesh.position.z = 0;
     });
@@ -170,19 +153,30 @@ class ProposalEnvironment extends Component {
 
     loader.load(Buildings, gltf => {
       mesh = gltf.scene;
-      mesh.name = EnvironmentFilter.CONTEXT;
+      // mesh.name = EnvironmentFilter.CONTEXT;
       this.scene.add(mesh);
       mesh.position.z = 0;
     });
 
     mesh.visible = true;
+
+
   };
 
   setupCameraCurve = () => {
     this.spline = new THREE.CatmullRomCurve3([
-      new THREE.Vector3(0, 0, 20),
-      new THREE.Vector3(0, 0, 10),
-      new THREE.Vector3(0, 5, 5)
+      new THREE.Vector3(0.5,-1,8), 
+      new THREE.Vector3(0.2,-1,6),   
+      new THREE.Vector3(-1,-1,6),  
+      new THREE.Vector3(-3,-1,6),     
+      new THREE.Vector3(-10,-1,6),
+      new THREE.Vector3(-25,-1,7),
+      new THREE.Vector3(-35,-1,15),
+      new THREE.Vector3(-38,-0.5,140),
+
+      new THREE.Vector3(-38,-0.5,165),
+      new THREE.Vector3(-38.7,-0.5,172),
+      new THREE.Vector3(-37,-0.5,190),
       //    new THREE.Vector3(5,0,39)
     ], false);
 
@@ -301,6 +295,7 @@ const mapStateToProps = state => {
     show_annotations: state.show_annotations,
     show_context: state.show_context,
     show_data: state.show_data,
+    show_future_stories: state.show_future_stories,
     has_loaded: state.has_loaded,
     loaded:  state.loaded,
     total: state.total
@@ -318,4 +313,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ProposalEnvironment);
+)(FutureEnvironment);

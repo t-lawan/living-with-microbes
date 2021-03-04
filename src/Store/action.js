@@ -5,6 +5,8 @@ export const STOP_LOADING = 'STOP_LOADING';
 export const TOGGLE_ANNOTATIONS = "TOGGLE_ANNOTATIONS"
 export const TOGGLE_CONTEXT = "TOGGLE_CONTEXT"
 export const TOGGLE_DATA = "TOGGLE_DATA"
+export const TOGGLE_FUTURE_STORIES = "TOGGLE_FUTURE_STORIES"
+export const TOGGLE_NOW_STORIES = "TOGGLE_NOW_STORIES"
 
 export const toggleAnnotations = () => {
     return {
@@ -15,6 +17,18 @@ export const toggleAnnotations = () => {
 export const toggleContext = () => {
     return {
         type: TOGGLE_CONTEXT
+    }
+}
+
+export const toggleFutureStories = () => {
+    return {
+        type: TOGGLE_FUTURE_STORIES
+    }
+}
+
+export const toggleNowStories = () => {
+    return {
+        type: TOGGLE_NOW_STORIES
     }
 }
 

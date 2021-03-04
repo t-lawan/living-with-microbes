@@ -41,8 +41,8 @@ let location = useLocation();
   return (
     <TopNavbarWrapper>
       <LinkWrapper>
-         <TopNavbarLink to={PageURls.RESEARCH.url} isSelected={IsPage(PageURls.RESEARCH.id, location.pathname)} onClick={() => onClick()}>now</TopNavbarLink>
-         <TopNavbarLink to={PageURls.PROPOSAL.url} isSelected={IsPage(PageURls.PROPOSAL.id, location.pathname)} onClick={() => onClick()}>future</TopNavbarLink> 
+         <TopNavbarLink to={PageURls.NOW.url} isSelected={IsPage(PageURls.RESEARCH.id, location.pathname)} onClick={() => onClick()}>now</TopNavbarLink>
+         <TopNavbarLink to={PageURls.FUTURE.url} isSelected={IsPage(PageURls.PROPOSAL.id, location.pathname)} onClick={() => onClick()}>future</TopNavbarLink> 
         <TopNavbarLink to={"/"} isSelected={IsPage(PageURls.HOME.id, location.pathname)} onClick={() => onClick()}>about</TopNavbarLink>
       </LinkWrapper>
     </TopNavbarWrapper>

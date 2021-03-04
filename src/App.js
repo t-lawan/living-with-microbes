@@ -6,6 +6,7 @@ import { reducer } from './Store/reducer';
 import Home from './Pages/Home';
 import Research from './Pages/Research';
 import Proposal from './Pages/Proposal';
+import { PageURls } from './Utility/Misc';
 
 
 const store = createStore(
@@ -20,8 +21,8 @@ function App() {
       <Router>
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/research" exact component={Research} />
-          <Route path="/proposal" exact component={Proposal} />
+          <Route path={PageURls.NOW.url} exact component={Research} />
+          <Route path={PageURls.FUTURE.url} exact component={Proposal} />
         </Switch>
       </Router>
     </Provider>

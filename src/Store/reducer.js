@@ -1,4 +1,4 @@
-import { LOADING, HAS_LOADED, TOGGLE_ANNOTATIONS, TOGGLE_CONTEXT, TOGGLE_DATA, IS_LOADING, STOP_LOADING } from "./action";
+import { LOADING, HAS_LOADED, TOGGLE_ANNOTATIONS, TOGGLE_CONTEXT, TOGGLE_DATA, IS_LOADING, STOP_LOADING, TOGGLE_FUTURE_STORIES, TOGGLE_NOW_STORIES } from "./action";
 
 const initalState = {
   has_loaded: false,
@@ -7,7 +7,9 @@ const initalState = {
   total: 1.0,
   show_annotations: true,
   show_data: true,
-  show_context: true
+  show_context: true,
+  show_future_stories: true,
+  show_now_stories: true,
 };
 
 
@@ -54,6 +56,16 @@ export const reducer = (state = initalState, action) => {
           return {
             ...state, 
             show_data: !state.show_data
+          }
+      case TOGGLE_FUTURE_STORIES:
+          return {
+            ...state, 
+            show_future_stories: !state.show_future_stories
+          }
+      case TOGGLE_NOW_STORIES:
+          return {
+            ...state, 
+            show_now_stories: !state.show_now_stories
           }
       default:
         return state;

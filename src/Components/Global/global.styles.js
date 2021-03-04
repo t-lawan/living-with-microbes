@@ -21,7 +21,8 @@ export const Colours = {
   yellow: "#E4EE3F",
   grey: "#CCD6D7",
   dark_grey: "	#707070",
-  green: "hsl(115, 100%, 42%)"
+  green: "hsl(115, 100%, 42%)",
+  environment_background: "#BABAB8"
 };
 
 export const GlobalStyle = createGlobalStyle`

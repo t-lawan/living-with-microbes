@@ -62,7 +62,7 @@ const LoadingPage = props => {
         <TopNavbar isOnLoadingPage={true} />
 
         <TextWrapper>
-          {IsPage(PageURls.RESEARCH.id, location.pathname) ? (
+          {IsPage(PageURls.FUTURE.id, location.pathname) ? (
             <React.Fragment>
               <Title> What could the future look like?</Title>
               <Text>
@@ -79,7 +79,7 @@ const LoadingPage = props => {
               </Text>
             </React.Fragment>
           ) : null}
-          {IsPage(PageURls.PROPOSAL.id, location.pathname) ? (
+          {IsPage(PageURls.NOW.id, location.pathname) ? (
             <React.Fragment>
               <Title> Where are we now?</Title>
               <Text>
