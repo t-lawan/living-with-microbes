@@ -26,6 +26,10 @@ class FutureEnvironment extends Component {
     total: 1.0
   };
   camPosIndex = 0;
+  mouse = new THREE.Vector2();
+  windowHalf = new THREE.Vector2();
+  target = new THREE.Vector2();
+  
   componentDidMount() {
     this.init();
     this.startAnimationLoop();
@@ -56,8 +60,25 @@ class FutureEnvironment extends Component {
 
     this.setupText();
     this.setupCameraCurve();
+    this.setupMouse();
     this.addEventListeners();
   };
+
+  setupMouse = () => {
+    this.mouse = new THREE.Vector2();
+    this.windowHalf = new THREE.Vector2(this.mount.clientWidth, this.mount.clientHeight);
+  }
+
+  updateMouse = () => {
+    this.target.x = ( 1 - this.mouse.x ) * 0.0000001;
+    this.target.y = ( 1 - this.mouse.y ) * 0.0000001;
+
+    this.camera.rotation.x += 0.0000001 * ( this.target.y - this.camera.rotation.x );
+    this.camera.rotation.y += 0.0000001 * ( this.target.x - this.camera.rotation.y );
+
+    console.log('X: ' + this.target.x, 'Y: ' + this.target.y);
+
+  }
 
   setupScene = () => {
     // get container dimensions and use them for scene sizing
@@ -195,6 +216,7 @@ class FutureEnvironment extends Component {
   }
 
   startAnimationLoop = () => {
+    this.updateMouse();
     this.renderer.render(this.scene, this.camera);
 
     // The window.requestAnimationFrame() method tells the browser that you wish to perform
@@ -212,11 +234,13 @@ class FutureEnvironment extends Component {
     // document.addEventListener("mousemove", this.onDocumentMouseMove, false);
     window.addEventListener("resize", this.onWindowResize, false);
     window.addEventListener("wheel", this.onMouseWheel, false);
+    window.addEventListener("mousemove", this.onMouseMove, false);
   };
 
   removeEventListeners = () => {
     window.removeEventListener("resize", this.onWindowResize);
     window.addEventListener("wheel", this.onMouseWheel);
+    window.addEventListener("mousemove", this.onMouseMove);
 
     // document.removeEventListener("dblclick", this.onDocumentDoubleClick);
     // document.removeEventListener("mouseup", this.onDocumentMouseUp);
@@ -240,11 +264,19 @@ class FutureEnvironment extends Component {
     this.camera.updateProjectionMatrix();
   };
 
+  onMouseMove = event => {
+    this.mouse.x = ( event.clientX - this.windowHalf.x );
+    this.mouse.y = ( event.clientY - this.windowHalf.x );
+    console.log('X: ' + this.mouse.x, 'Y: ' + this.mouse.y);
+
+  }
+
   onMouseWheel = event => {
-    if (event.deltaY < 0 && this.camPosIndex < 99) {
+    let numOfPoints = 1000;
+    if (event.deltaY < 0 && this.camPosIndex < numOfPoints - 1) {
       this.camPosIndex++;
 
-      let camPos = this.spline.getPoint(this.camPosIndex / 100);
+      let camPos = this.spline.getPoint(this.camPosIndex / numOfPoints);
       let camRot = this.spline.getTangent(this.camPosIndex);
 
       this.camera.position.x = camPos.x;
@@ -255,10 +287,10 @@ class FutureEnvironment extends Component {
       this.camera.rotation.y = camRot.y;
       this.camera.rotation.z = camRot.z;
 
-      this.camera.lookAt(this.spline.getPoint((this.camPosIndex + 1) / 100));
+      this.camera.lookAt(this.spline.getPoint((this.camPosIndex + 1) / numOfPoints));
     } else if (event.deltaY > 0 && this.camPosIndex > 0) {
       this.camPosIndex--;
-      let camPos = this.spline.getPoint(this.camPosIndex / 100);
+      let camPos = this.spline.getPoint(this.camPosIndex / numOfPoints);
       let camRot = this.spline.getTangent(this.camPosIndex);
 
       this.camera.position.x = camPos.x;
@@ -269,7 +301,7 @@ class FutureEnvironment extends Component {
       this.camera.rotation.y = camRot.y;
       this.camera.rotation.z = camRot.z;
 
-      this.camera.lookAt(this.spline.getPoint((this.camPosIndex + 1) / 100));
+      this.camera.lookAt(this.spline.getPoint((this.camPosIndex + 1) / numOfPoints));
     }
 
     //   camera.position.z += event.deltaY * 0.01;
