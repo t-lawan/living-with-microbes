@@ -8,7 +8,6 @@ import styled from "styled-components";
 import { Colours } from "../Global/global.styles.js";
 import { EnvironmentFilter } from "../../Utility/Misc.js";
 import { loading, hasLoaded, isLoading } from "../../Store/action.js";
-// import Buildings from '../../Assets/Models/proposalscenefinaljoinmat.glb'
 const style = {
     height: '100%'
 }
@@ -20,7 +19,6 @@ const ProposalEnvironmentWrapper = styled.div`
 
 let Text = 'https://dt8c09yje207j.cloudfront.net/proposaltext.glb'
 let Buildings = 'https://dt8c09yje207j.cloudfront.net/proposalscenefinaljoinmat.glb'
-// let Buildings = 'https://dt8c09yje207j.cloudfront.net/Buildings.glb'
 class FutureEnvironment extends Component {
   state = {
     has_loaded: false,
@@ -160,6 +158,7 @@ class FutureEnvironment extends Component {
       this.scene.add(mesh);
       mesh.position.z = 0;
     });
+
 
     mesh.visible = true;
 

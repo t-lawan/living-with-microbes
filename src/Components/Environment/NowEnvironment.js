@@ -8,9 +8,6 @@ import styled from "styled-components";
 import { Colours } from "../Global/global.styles.js";
 import { EnvironmentFilter } from "../../Utility/Misc.js";
 import { loading, hasLoaded, isLoading } from "../../Store/action.js";
-// import Data from '../../Assets/Models/researchdata.glb'
-// import Buildings from '../../Assets/Models/researchfinaljoinmat.glb'
-// import Text from '../../Assets/Models/researchtext.glb'
 const style = {
     height: '100%'
 }
@@ -39,6 +36,10 @@ class NowEnvironment extends Component {
     if(prevProps.show_now_stories !== this.props.show_now_stories) {
       this.toggleObjectVisibility(EnvironmentFilter.NOW_STORIES)
     }
+
+    if(prevProps.show_data !== this.props.show_data) {
+        this.toggleObjectVisibility(EnvironmentFilter.DATA)
+      }
   }
 
   componentWillUnmount() {
@@ -53,10 +54,11 @@ class NowEnvironment extends Component {
     this.setupScene();
     this.setupLights();
     this.setupLoadingManager();
+   
     this.setupData(); 
     this.setupBuildings();
-
     this.setupText();
+
     this.setupCameraCurve();
     this.addEventListeners();
   };
@@ -153,7 +155,7 @@ class NowEnvironment extends Component {
 
     loader.load(Text, gltf => {
       mesh = gltf.scene;
-      mesh.name = EnvironmentFilter.FUTURE_STORIES;
+      mesh.name = EnvironmentFilter.NOW_STORIES;
       this.scene.add(mesh);
       mesh.position.z = 0;
     });
@@ -167,7 +169,7 @@ class NowEnvironment extends Component {
 
     loader.load(Data, gltf => {
       mesh = gltf.scene;
-      mesh.name = EnvironmentFilter.FUTURE_STORIES;
+      mesh.name = EnvironmentFilter.DATA;
       this.scene.add(mesh);
       mesh.position.z = 0;
     });

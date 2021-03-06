@@ -2467,15 +2467,15 @@ var GLTFLoader = ( function () {
 	};
 
 	GLTFParser.prototype.loadTextureImage = function ( textureIndex, source, loader ) {
-		let self = this;
+		// let self = this;
 		var parser = this;
 		var json = this.json;
 		var options = this.options;
 
 		var textureDef = json.textures[ textureIndex ];
 
-		var URL = self.URL || self.webkitURL;
-
+		// var URL = self.URL || self.webkitURL;
+		var URL = window.self.URL || window.self.webkitURL;
 		var sourceURI = source.uri;
 		var isObjectURL = false;
 		var hasAlpha = true;
