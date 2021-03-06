@@ -283,10 +283,11 @@ class NowEnvironment extends Component {
   };
 
   onMouseWheel = event => {
-    if (event.deltaY < 0 && this.camPosIndex < 99) {
+    let numOfPoints = 1000;
+    if (event.deltaY < 0 && this.camPosIndex < numOfPoints - 1) {
       this.camPosIndex++;
 
-      let camPos = this.spline.getPoint(this.camPosIndex / 100);
+      let camPos = this.spline.getPoint(this.camPosIndex / numOfPoints);
       let camRot = this.spline.getTangent(this.camPosIndex);
 
       this.camera.position.x = camPos.x;
@@ -297,10 +298,10 @@ class NowEnvironment extends Component {
       this.camera.rotation.y = camRot.y;
       this.camera.rotation.z = camRot.z;
 
-      this.camera.lookAt(this.spline.getPoint((this.camPosIndex + 1) / 100));
+      this.camera.lookAt(this.spline.getPoint((this.camPosIndex + 1) / numOfPoints));
     } else if (event.deltaY > 0 && this.camPosIndex > 0) {
       this.camPosIndex--;
-      let camPos = this.spline.getPoint(this.camPosIndex / 100);
+      let camPos = this.spline.getPoint(this.camPosIndex / numOfPoints);
       let camRot = this.spline.getTangent(this.camPosIndex);
 
       this.camera.position.x = camPos.x;
@@ -311,9 +312,8 @@ class NowEnvironment extends Component {
       this.camera.rotation.y = camRot.y;
       this.camera.rotation.z = camRot.z;
 
-      this.camera.lookAt(this.spline.getPoint((this.camPosIndex + 1) / 100));
+      this.camera.lookAt(this.spline.getPoint((this.camPosIndex + 1) / numOfPoints));
     }
-
     //   camera.position.z += event.deltaY * 0.01;
   };
 
