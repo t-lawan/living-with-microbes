@@ -75,9 +75,6 @@ class FutureEnvironment extends Component {
 
     this.camera.rotation.x += 0.0000001 * ( this.target.y - this.camera.rotation.x );
     this.camera.rotation.y += 0.0000001 * ( this.target.x - this.camera.rotation.y );
-
-    console.log('X: ' + this.target.x, 'Y: ' + this.target.y);
-
   }
 
   setupScene = () => {
@@ -267,8 +264,6 @@ class FutureEnvironment extends Component {
   onMouseMove = event => {
     this.mouse.x = ( event.clientX - this.windowHalf.x );
     this.mouse.y = ( event.clientY - this.windowHalf.x );
-    console.log('X: ' + this.mouse.x, 'Y: ' + this.mouse.y);
-
   }
 
   onMouseWheel = event => {

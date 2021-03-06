@@ -126,7 +126,6 @@ class NowEnvironment extends Component {
   };
 
   loadProgressing = (url, itemsLoaded, itemsTotal) => {
-    console.log('LOADED: ' + itemsLoaded + ", TOTAL: " + itemsTotal )
     this.props.loading(itemsLoaded, itemsTotal);
   };
 
