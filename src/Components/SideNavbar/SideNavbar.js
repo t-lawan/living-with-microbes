@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Colours, size } from "../Global/global.styles";
-import { toggleAnnotations, toggleData, toggleContext, toggleFutureStories, toggleNowStories } from "../../Store/action";
+import { toggleData, toggleFutureStories, toggleNowStories } from "../../Store/action";
 import { useLocation } from 'react-router-dom'
 import { IsPage, PageURls } from "../../Utility/Misc";
 const SideNavbarWrapper = styled.div`
@@ -61,6 +61,8 @@ const SideNavbar = props => {
         {IsPage(PageURls.NOW.id, location.pathname) ? (
           <>
           <FilterLink onClick={props.toggleNowStories} isSelected={props.show_now_stories}> stories </FilterLink>
+          <FilterLink onClick={props.toggleData} isSelected={props.show_data}> data </FilterLink>
+
           </>
         ) : null}
 
@@ -87,9 +89,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    toggleAnnotations: () => dispatch(toggleAnnotations()),
     toggleData: () => dispatch(toggleData()),
-    toggleContext: () => dispatch(toggleContext()),
     toggleFutureStories:() => dispatch(toggleFutureStories()),
     toggleNowStories: () => dispatch(toggleNowStories())
   };

@@ -84,7 +84,7 @@ class FutureEnvironment extends Component {
 
   setupCamera = () => {
     this.camera = new THREE.PerspectiveCamera(
-      50, // fov = field of view
+      20, // fov = field of view
       this.mount.clientWidth / this.mount.clientHeight, // aspect ratio
       0.1, // near plane
       1000 // far plane
@@ -114,9 +114,6 @@ class FutureEnvironment extends Component {
     this.manager.onStart = this.loadStart;
     this.manager.onProgress = this.loadProgressing;
     this.manager.onLoad = this.loadFinished;
-    this.manager.onError = (url) => {
-      console.log(url+ ' failed')
-    }
   };
 
   loadStart = (url, itemsLoaded, itemsTotal) => {
@@ -125,7 +122,6 @@ class FutureEnvironment extends Component {
   };
 
   loadProgressing = (url, itemsLoaded, itemsTotal) => {
-    console.log('LOADED: ' + itemsLoaded + ", TOTAL: " + itemsTotal )
     this.props.loading(itemsLoaded, itemsTotal);
   };
 
@@ -178,8 +174,7 @@ class FutureEnvironment extends Component {
 
       new THREE.Vector3(-38,-0.5,165),
       new THREE.Vector3(-38.7,-0.5,172),
-      new THREE.Vector3(-37,-0.5,190),
-      //    new THREE.Vector3(5,0,39)
+      new THREE.Vector3(-37,-0.5,190)
     ], false);
 
 

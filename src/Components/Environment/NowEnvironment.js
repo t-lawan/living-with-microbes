@@ -135,20 +135,6 @@ class NowEnvironment extends Component {
     this.onWindowResize();
   };
 
-  // setupMicrobes = () => {
-  //   const loader = new GLTFLoader(this.manager);
-  //   let mesh = new THREE.Object3D();
-
-  //   loader.load(Microbes, gltf => {
-  //     mesh = gltf.scene;
-  //     mesh.name = EnvironmentFilter.DATA;
-  //     this.scene.add(mesh);
-  //     mesh.position.z = 0;
-  //   });
-
-  //   mesh.visible = true;
-  // };
-
   setupText = () => {
     const loader = new GLTFLoader(this.manager);
     let mesh = new THREE.Object3D();
@@ -195,43 +181,42 @@ class NowEnvironment extends Component {
 
   setupCameraCurve = () => {
     this.spline = new THREE.CatmullRomCurve3([
-        new THREE.Vector3(2,-1,-1),
+      new THREE.Vector3(2,-1,-1),
            
-        new THREE.Vector3(1.5,-1.1,-8),
-        new THREE.Vector3(-0.6,-1.5,-11),
-        new THREE.Vector3(-0.4,-1.5,-12),
+      new THREE.Vector3(1.5,-1.1,-8),
+      new THREE.Vector3(-0.6,-1.5,-11),
+      new THREE.Vector3(-0.4,-1.5,-12),
 
-        new THREE.Vector3(-2.2,-1.5,-16),
-        new THREE.Vector3(-3,-1.5,-25),
+      new THREE.Vector3(-2.2,-1.5,-16),
+      new THREE.Vector3(-3,-1.5,-25),
 
-        new THREE.Vector3(0.5,-1.3,-30),
-        new THREE.Vector3(0.5,-1.3,-50),
-        new THREE.Vector3(1,-1.3,-65),
-        new THREE.Vector3(-8,-1.3,-68),
-        new THREE.Vector3(-20,-1.3,-70),
-        new THREE.Vector3(-40,-1,-70),
-        new THREE.Vector3(-60,-1,-70),
-        new THREE.Vector3(-70,-1,-70),
-        new THREE.Vector3(-75,-1,-70),
-        new THREE.Vector3(-83,-1,-70),
+      new THREE.Vector3(0.5,-1.3,-30),
+      new THREE.Vector3(0.5,-1.3,-50),
+      new THREE.Vector3(1,-1.3,-65),
+      new THREE.Vector3(-8,-1.3,-68),
+      new THREE.Vector3(-20,-1.3,-70),
+      new THREE.Vector3(-40,-1,-70),
+      new THREE.Vector3(-60,-1,-70),
+      new THREE.Vector3(-70,-1,-70),
+      new THREE.Vector3(-75,-1,-70),
+      new THREE.Vector3(-83,-1,-70),
 
-        new THREE.Vector3(-88,-1,-73),
-        new THREE.Vector3(-88,-1,-74),
-        new THREE.Vector3(-88,-1.5,-76),
-        new THREE.Vector3(-89,-1.5,-77),
+      new THREE.Vector3(-88,-1,-73),
+      new THREE.Vector3(-88,-1,-74),
+      new THREE.Vector3(-88,-1.5,-76),
+      new THREE.Vector3(-89,-1.5,-77),
 
-        new THREE.Vector3(-95,-1,-73),
-        new THREE.Vector3(-110,-1,-72),
-        new THREE.Vector3(-150,-1,-72),
-        new THREE.Vector3(-170,-1,-72),
-        new THREE.Vector3(-190,-1,-72),
-        new THREE.Vector3(-195,-1,-72),
-        new THREE.Vector3(-195,-1,-80),
-        new THREE.Vector3(-195,-1,-85),
-        new THREE.Vector3(-195,-1,-99),
-        new THREE.Vector3(-198,-1.3,-99),
-        new THREE.Vector3(-203,-1.3,-99),
-      //    new THREE.Vector3(5,0,39)
+      new THREE.Vector3(-95,-1,-73),
+      new THREE.Vector3(-110,-1,-72),
+      new THREE.Vector3(-150,-1,-72),
+      new THREE.Vector3(-170,-1,-72),
+      new THREE.Vector3(-190,-1,-72),
+      new THREE.Vector3(-195,-1,-72),
+      new THREE.Vector3(-195,-1,-80),
+      new THREE.Vector3(-195,-1,-85),
+      new THREE.Vector3(-195,-1,-99),
+      new THREE.Vector3(-198,-1.3,-99),
+      new THREE.Vector3(-203,-1.3,-99),
     ], false);
 
 

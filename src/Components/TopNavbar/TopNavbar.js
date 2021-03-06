@@ -33,17 +33,17 @@ const LinkWrapper = styled.div`
 const TopNavbar = props => {
 
 let location = useLocation();
-  let onClick =() =>{
-    if(props.isOnLoadingPage) {
+  let onClick =(id = PageURls.HOME.id) =>{
+    if(props.isOnLoadingPage && !IsPage(id, location.pathname)) {
       props.stopLoading()
     }
   }
   return (
     <TopNavbarWrapper>
       <LinkWrapper>
-         <TopNavbarLink to={PageURls.NOW.url} isSelected={IsPage(PageURls.NOW.id, location.pathname)} onClick={() => onClick()}>now</TopNavbarLink>
-         <TopNavbarLink to={PageURls.FUTURE.url} isSelected={IsPage(PageURls.FUTURE.id, location.pathname)} onClick={() => onClick()}>future</TopNavbarLink> 
-        <TopNavbarLink to={"/"} isSelected={IsPage(PageURls.HOME.id, location.pathname)} onClick={() => onClick()}>about</TopNavbarLink>
+         <TopNavbarLink to={PageURls.NOW.url} isSelected={IsPage(PageURls.NOW.id, location.pathname)} onClick={() => onClick(PageURls.NOW.id)}>now</TopNavbarLink>
+         <TopNavbarLink to={PageURls.FUTURE.url} isSelected={IsPage(PageURls.FUTURE.id, location.pathname)} onClick={() => onClick(PageURls.FUTURE.id)}>future</TopNavbarLink> 
+         <TopNavbarLink to={"/"} isSelected={IsPage(PageURls.HOME.id, location.pathname)} onClick={() => onClick(PageURls.HOME.id)}>about</TopNavbarLink>
       </LinkWrapper>
     </TopNavbarWrapper>
   );
