@@ -10,7 +10,7 @@ export const Main = styled.section`
 `
 const Layout = props => {
   let description = "Living With Microbes";
-  let url = "https://demomovingimage.net/";
+  let url = "";
   let title = "Living With Microbes";
 
   return (
