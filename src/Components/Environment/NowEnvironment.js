@@ -8,6 +8,9 @@ import styled from "styled-components";
 import { Colours } from "../Global/global.styles.js";
 import { EnvironmentFilter } from "../../Utility/Misc.js";
 import { loading, hasLoaded, isLoading } from "../../Store/action.js";
+import Text from '../../Assets/Models/researchtext.glb'
+import Buildings from '../../Assets/Models/researchfinaljoinmat.glb'
+import Data from '../../Assets/Models/researchdata.glb'
 const style = {
     height: '100%'
 }
@@ -17,9 +20,9 @@ const ProposalEnvironmentWrapper = styled.div`
   height: 100
 `;
 
-let Text = 'https://dt8c09yje207j.cloudfront.net/researchtext.glb'
-let Buildings = 'https://dt8c09yje207j.cloudfront.net/researchfinaljoinmat.glb'
-let Data = "https://dt8c09yje207j.cloudfront.net/researchdata.glb"
+// let Text = 'https://dt8c09yje207j.cloudfront.net/researchtext.glb'
+// let Buildings = 'https://dt8c09yje207j.cloudfront.net/researchfinaljoinmat.glb'
+// let Data = "https://dt8c09yje207j.cloudfront.net/researchdata.glb"
 class NowEnvironment extends Component {
   state = {
     has_loaded: false,
