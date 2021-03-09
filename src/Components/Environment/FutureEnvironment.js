@@ -16,7 +16,7 @@ const style = {
 const ProposalEnvironmentWrapper = styled.div`
   display: ${props => (props.show ? "inherit" : "none")};
   overflow: hidden;
-  height: 100
+  height: 100%;
 `;
 
 // let Text = 'https://dt8c09yje207j.cloudfront.net/proposaltext.glb'
@@ -269,7 +269,7 @@ class FutureEnvironment extends Component {
   }
 
   onMouseWheel = event => {
-    let numOfPoints = 1000;
+    let numOfPoints = 700;
     if (event.deltaY < 0 && this.camPosIndex < numOfPoints - 1) {
       this.camPosIndex++;
 

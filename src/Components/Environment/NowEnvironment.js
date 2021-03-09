@@ -285,7 +285,7 @@ class NowEnvironment extends Component {
   };
 
   onMouseWheel = event => {
-    let numOfPoints = 1000;
+    let numOfPoints = 700;
     if (event.deltaY < 0 && this.camPosIndex < numOfPoints - 1) {
       this.camPosIndex++;
 

@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import LoadingPage from "../LoadingPage/LoadingPage";
 
 export const Main = styled.section`
-
+  overflow-x: hidden;
 `
 const Layout = props => {
   let description = "Living With Microbes";
