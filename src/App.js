@@ -20,9 +20,9 @@ function App() {
     <Provider store={store}>
       <Router>
         <Switch>
-          <Route path="/" exact component={Home} />
           <Route path={PageURls.NOW.url} exact component={Research} />
           <Route path={PageURls.FUTURE.url} exact component={Proposal} />
+          <Route path="/" exact component={Home} />
         </Switch>
       </Router>
     </Provider>
