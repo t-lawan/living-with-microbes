@@ -58,6 +58,7 @@ const HomePageLinksWrapper = styled.div`
 const HomePageLinks = styled(StyledLinks)`
   font-size: 1.5rem;
   text-decoration: underline;
+  text-align: center;
 `;
 
 const Home = () => {

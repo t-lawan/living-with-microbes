@@ -31,6 +31,7 @@ class FutureEnvironment extends Component {
   mouse = new THREE.Vector2();
   windowHalf = new THREE.Vector2();
   target = new THREE.Vector2();
+  numOfPoints = 700;
   
   componentDidMount() {
     this.init();
@@ -234,12 +235,19 @@ class FutureEnvironment extends Component {
     window.addEventListener("resize", this.onWindowResize, false);
     window.addEventListener("wheel", this.onMouseWheel, false);
     window.addEventListener("mousemove", this.onMouseMove, false);
+    // window.addEventListener("touchstart", this.onTouchStart, false);
+    // window.addEventListener("touchend", this.onTouchEnd, false);
+    window.addEventListener("touchmove", this.onTouchMove, false);
+
   };
 
   removeEventListeners = () => {
     window.removeEventListener("resize", this.onWindowResize);
-    window.addEventListener("wheel", this.onMouseWheel);
-    window.addEventListener("mousemove", this.onMouseMove);
+    window.removeEventListener("wheel", this.onMouseWheel);
+    window.removeEventListener("mousemove", this.onMouseMove);
+    // window.removeEventListener("touchstart", this.onTouchStart);
+    // window.removeEventListener("touchend", this.onTouchEnd);
+    window.removeEventListener("touchmove", this.onTouchMove);
 
     // document.removeEventListener("dblclick", this.onDocumentDoubleClick);
     // document.removeEventListener("mouseup", this.onDocumentMouseUp);
@@ -268,12 +276,20 @@ class FutureEnvironment extends Component {
     this.mouse.y = ( event.clientY - this.windowHalf.x );
   }
 
-  onMouseWheel = event => {
-    let numOfPoints = 700;
-    if (event.deltaY < 0 && this.camPosIndex < numOfPoints - 1) {
+  onTouchStart = event => {
+    console.log('EVENT', event.targetTouches)
+  }
+
+  onTouchEnd = event => {
+    console.log('EVENT', event)
+  }
+
+  onTouchMove = event => {
+
+    if (this.camPosIndex < this.numOfPoints - 1) {
       this.camPosIndex++;
 
-      let camPos = this.spline.getPoint(this.camPosIndex / numOfPoints);
+      let camPos = this.spline.getPoint(this.camPosIndex / this.numOfPoints);
       let camRot = this.spline.getTangent(this.camPosIndex);
 
       this.camera.position.x = camPos.x;
@@ -284,10 +300,29 @@ class FutureEnvironment extends Component {
       this.camera.rotation.y = camRot.y;
       this.camera.rotation.z = camRot.z;
 
-      this.camera.lookAt(this.spline.getPoint((this.camPosIndex + 1) / numOfPoints));
+      this.camera.lookAt(this.spline.getPoint((this.camPosIndex + 1) / this.numOfPoints));
+    }
+  }
+  onMouseWheel = event => {
+    // let numOfPoints = 700;
+    if (event.deltaY < 0 && this.camPosIndex < this.numOfPoints - 1) {
+      this.camPosIndex++;
+
+      let camPos = this.spline.getPoint(this.camPosIndex / this.numOfPoints);
+      let camRot = this.spline.getTangent(this.camPosIndex);
+
+      this.camera.position.x = camPos.x;
+      this.camera.position.y = camPos.y;
+      this.camera.position.z = camPos.z;
+
+      this.camera.rotation.x = camRot.x;
+      this.camera.rotation.y = camRot.y;
+      this.camera.rotation.z = camRot.z;
+
+      this.camera.lookAt(this.spline.getPoint((this.camPosIndex + 1) / this.numOfPoints));
     } else if (event.deltaY > 0 && this.camPosIndex > 0) {
       this.camPosIndex--;
-      let camPos = this.spline.getPoint(this.camPosIndex / numOfPoints);
+      let camPos = this.spline.getPoint(this.camPosIndex / this.numOfPoints);
       let camRot = this.spline.getTangent(this.camPosIndex);
 
       this.camera.position.x = camPos.x;
@@ -298,7 +333,7 @@ class FutureEnvironment extends Component {
       this.camera.rotation.y = camRot.y;
       this.camera.rotation.z = camRot.z;
 
-      this.camera.lookAt(this.spline.getPoint((this.camPosIndex + 1) / numOfPoints));
+      this.camera.lookAt(this.spline.getPoint((this.camPosIndex + 1) / this.numOfPoints));
     }
 
     //   camera.position.z += event.deltaY * 0.01;
