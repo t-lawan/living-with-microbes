@@ -5,9 +5,7 @@ const initalState = {
   is_loading: false,
   loaded: 0.0,
   total: 1.0,
-  show_annotations: true,
   show_data: true,
-  show_context: true,
   show_future_stories: true,
   show_now_stories: true,
 };
@@ -42,16 +40,6 @@ export const reducer = (state = initalState, action) => {
           loaded: action.loaded,
           total: action.total
         };
-      case TOGGLE_ANNOTATIONS:
-        return {
-          ...state, 
-          show_annotations: !state.show_annotations
-        }
-      case TOGGLE_CONTEXT:
-        return {
-          ...state, 
-          show_context: !state.show_context
-        }
       case TOGGLE_DATA:
           return {
             ...state, 

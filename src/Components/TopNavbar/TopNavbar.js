@@ -51,8 +51,6 @@ let location = useLocation();
 
 const mapStateToProps = state => {
   return {
-    show_annotations: state.show_annotations,
-    show_context: state.show_context,
     show_data: state.show_data,
   };
 };

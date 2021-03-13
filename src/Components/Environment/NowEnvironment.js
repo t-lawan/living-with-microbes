@@ -361,8 +361,6 @@ class NowEnvironment extends Component {
 }
 const mapStateToProps = state => {
   return {
-    show_annotations: state.show_annotations,
-    show_context: state.show_context,
     show_data: state.show_data,
     show_now_stories: state.show_now_stories,
     has_loaded: state.has_loaded,

@@ -353,8 +353,6 @@ class FutureEnvironment extends Component {
 }
 const mapStateToProps = state => {
   return {
-    show_annotations: state.show_annotations,
-    show_context: state.show_context,
     show_data: state.show_data,
     show_future_stories: state.show_future_stories,
     has_loaded: state.has_loaded,
