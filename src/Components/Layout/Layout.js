@@ -1,10 +1,10 @@
 import * as React from "react";
-import { Helmet } from "react-helmet";
+// import { Helmet } from "react-helmet";
 import { GlobalStyle, TwoColumnSection } from "../Global/global.styles";
 import SideNavbar from "../SideNavbar/SideNavbar";
 import styled from 'styled-components'
 import LoadingPage from "../LoadingPage/LoadingPage";
-
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 export const Main = styled.section`
   overflow: hidden;
 `
@@ -14,7 +14,7 @@ const Layout = props => {
   let title = "Living With Microbes";
 
   return (
-    <>
+    <HelmetProvider>
       <Helmet
         htmlAttributes={{
           lang: "en"
@@ -74,7 +74,7 @@ const Layout = props => {
       <GlobalStyle />
       <LoadingPage />
       <Main>{props.children}</Main>
-    </>
+    </HelmetProvider>
   );
 };
 

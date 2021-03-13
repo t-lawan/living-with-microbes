@@ -62,7 +62,7 @@ const Text = styled.p`
 const LoadingPage = props => {
   let location = useLocation();
   return (
-    <LoadingPageWrapper show={props.is_loading}>
+    <LoadingPageWrapper show={props.show_loading_page}>
       <ContentWrapper>
         <TopNavbar isOnLoadingPage={true} />
 
@@ -112,6 +112,7 @@ const LoadingPage = props => {
 const mapStateToProps = state => {
   return {
     is_loading: state.is_loading,
+    show_loading_page: state.show_loading_page,
     has_loaded: state.has_loaded,
     loaded: state.loaded,
     total: state.total
