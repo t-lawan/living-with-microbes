@@ -7,6 +7,7 @@ import { useLocation } from "react-router-dom";
 import { IsPage, PageURls } from "../../Utility/Misc";
 import { Title } from "../../Pages/Home";
 import TopNavbar from "../TopNavbar/TopNavbar";
+import { hideLoadingPage } from "../../Store/action";
 
 const LoadingPageWrapper = styled.div`
   display: ${props => (props.show ? "flex" : "none")};
@@ -102,6 +103,9 @@ const LoadingPage = props => {
             </React.Fragment>
           ) : null}
         </TextWrapper>
+        {props.has_loaded ? (<TextWrapper>
+          <Text onClick={() => props.hideLoadingPage()}> Click to Enter</Text>
+        </TextWrapper>) : null}
         <LoadingBarWrapper>
           <LoadingBar show={true} loaded={props.loaded} total={props.total} />
         </LoadingBarWrapper>
@@ -119,9 +123,14 @@ const mapStateToProps = state => {
   };
 };
 
+const mapDispatchToProps = dispatch => {
+  return {
+    hideLoadingPage: () => dispatch(hideLoadingPage())
+  };
+};
 
 
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(LoadingPage);

@@ -1,4 +1,4 @@
-import { LOADING, HAS_LOADED, TOGGLE_ANNOTATIONS, TOGGLE_CONTEXT, TOGGLE_DATA, IS_LOADING, STOP_LOADING, TOGGLE_FUTURE_STORIES, TOGGLE_NOW_STORIES } from "./action";
+import { LOADING, HAS_LOADED, TOGGLE_ANNOTATIONS, TOGGLE_CONTEXT, TOGGLE_DATA, IS_LOADING, STOP_LOADING, TOGGLE_FUTURE_STORIES, TOGGLE_NOW_STORIES, HIDE_LOADING_PAGE } from "./action";
 
 const initalState = {
   has_loaded: false,
@@ -18,9 +18,7 @@ export const reducer = (state = initalState, action) => {
         return {
           ...state,
           has_loaded: true,
-          loaded: 0.0,
-          total: 1.0,
-          is_loading: false,
+
         };
       case STOP_LOADING:
         return {
@@ -37,6 +35,14 @@ export const reducer = (state = initalState, action) => {
           is_loading: true,
           show_loading_page: true
         };
+      case HIDE_LOADING_PAGE:
+        return {
+          ...state,
+          loaded: 0.0,
+          total: 1.0,
+          is_loading: false,
+          show_loading_page: false
+        }
       case LOADING:
         return {
           ...state,

@@ -1,6 +1,6 @@
 export const LOADING = 'LOADING';
 export const HAS_LOADED = 'HAS_LOADED';
-export const SHOW_LOADING_PAGE = 'SHOW_LOADING_PAGE';
+export const HIDE_LOADING_PAGE = 'SHOW_LOADING_PAGE';
 export const IS_LOADING = 'IS_LOADING';
 export const STOP_LOADING = 'STOP_LOADING';
 export const TOGGLE_ANNOTATIONS = "TOGGLE_ANNOTATIONS"
@@ -66,8 +66,8 @@ export const stopLoading = () => {
     }
 }
 
-export const showLoadingPage = () => {
+export const hideLoadingPage = () => {
     return {
-        type: SHOW_LOADING_PAGE
+        type: HIDE_LOADING_PAGE
     }
 }
