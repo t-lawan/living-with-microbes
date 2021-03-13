@@ -31,7 +31,8 @@ class NowEnvironment extends Component {
   };
   camPosIndex = 0;
   numOfPoints = 700;
-
+  touchStartPosition = 0;
+  touchEndPosition = 1;
   componentDidMount() {
     this.init();
     this.startAnimationLoop();
@@ -292,7 +293,6 @@ class NowEnvironment extends Component {
 
 
   onTouchMove = event => {
-
     if (this.camPosIndex < this.numOfPoints - 1) {
       this.camPosIndex++;
 

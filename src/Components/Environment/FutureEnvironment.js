@@ -32,7 +32,8 @@ class FutureEnvironment extends Component {
   windowHalf = new THREE.Vector2();
   target = new THREE.Vector2();
   numOfPoints = 700;
-  
+  lastTouchPosition = 0;
+  touchEndPosition = 1;
   componentDidMount() {
     this.init();
     this.startAnimationLoop();
@@ -235,8 +236,8 @@ class FutureEnvironment extends Component {
     window.addEventListener("resize", this.onWindowResize, false);
     window.addEventListener("wheel", this.onMouseWheel, false);
     window.addEventListener("mousemove", this.onMouseMove, false);
-    // window.addEventListener("touchstart", this.onTouchStart, false);
-    // window.addEventListener("touchend", this.onTouchEnd, false);
+    window.addEventListener("touchstart", this.onTouchStart, false);
+    window.addEventListener("touchend", this.onTouchEnd, false);
     window.addEventListener("touchmove", this.onTouchMove, false);
 
   };
@@ -245,8 +246,8 @@ class FutureEnvironment extends Component {
     window.removeEventListener("resize", this.onWindowResize);
     window.removeEventListener("wheel", this.onMouseWheel);
     window.removeEventListener("mousemove", this.onMouseMove);
-    // window.removeEventListener("touchstart", this.onTouchStart);
-    // window.removeEventListener("touchend", this.onTouchEnd);
+    window.removeEventListener("touchstart", this.onTouchStart);
+    window.removeEventListener("touchend", this.onTouchEnd);
     window.removeEventListener("touchmove", this.onTouchMove);
 
     // document.removeEventListener("dblclick", this.onDocumentDoubleClick);
@@ -277,67 +278,59 @@ class FutureEnvironment extends Component {
   }
 
   onTouchStart = event => {
-    console.log('EVENT', event.targetTouches)
+    // console.log('onTouchStart', event.touches[0])
   }
 
   onTouchEnd = event => {
-    console.log('EVENT', event)
+    // console.log('onTouchEnd', event.changedTouches[0])
   }
 
   onTouchMove = event => {
-
-    if (this.camPosIndex < this.numOfPoints - 1) {
-      this.camPosIndex++;
-
-      let camPos = this.spline.getPoint(this.camPosIndex / this.numOfPoints);
-      let camRot = this.spline.getTangent(this.camPosIndex);
-
-      this.camera.position.x = camPos.x;
-      this.camera.position.y = camPos.y;
-      this.camera.position.z = camPos.z;
-
-      this.camera.rotation.x = camRot.x;
-      this.camera.rotation.y = camRot.y;
-      this.camera.rotation.z = camRot.z;
-
-      this.camera.lookAt(this.spline.getPoint((this.camPosIndex + 1) / this.numOfPoints));
+    console.log('onTouchMove', )
+    let position = event.changedTouches[0].clientY;
+    let threshold = 1;
+    if((position >= this.lastTouchPosition + threshold ) && this.camPosIndex > 0) {
+      console.log()
+      this.moveBack()
+    } else if((position + threshold < this.lastTouchPosition) && this.camPosIndex < this.numOfPoints - 1) {
+      this.moveForward()
     }
+    this.lastTouchPosition = position;
+
   }
   onMouseWheel = event => {
     // let numOfPoints = 700;
     if (event.deltaY < 0 && this.camPosIndex < this.numOfPoints - 1) {
-      this.camPosIndex++;
-
-      let camPos = this.spline.getPoint(this.camPosIndex / this.numOfPoints);
-      let camRot = this.spline.getTangent(this.camPosIndex);
-
-      this.camera.position.x = camPos.x;
-      this.camera.position.y = camPos.y;
-      this.camera.position.z = camPos.z;
-
-      this.camera.rotation.x = camRot.x;
-      this.camera.rotation.y = camRot.y;
-      this.camera.rotation.z = camRot.z;
-
-      this.camera.lookAt(this.spline.getPoint((this.camPosIndex + 1) / this.numOfPoints));
+      this.moveForward()
     } else if (event.deltaY > 0 && this.camPosIndex > 0) {
-      this.camPosIndex--;
-      let camPos = this.spline.getPoint(this.camPosIndex / this.numOfPoints);
-      let camRot = this.spline.getTangent(this.camPosIndex);
-
-      this.camera.position.x = camPos.x;
-      this.camera.position.y = camPos.y;
-      this.camera.position.z = camPos.z;
-
-      this.camera.rotation.x = camRot.x;
-      this.camera.rotation.y = camRot.y;
-      this.camera.rotation.z = camRot.z;
-
-      this.camera.lookAt(this.spline.getPoint((this.camPosIndex + 1) / this.numOfPoints));
+      this.moveBack();
     }
-
-    //   camera.position.z += event.deltaY * 0.01;
   };
+
+  moveForward = () => {
+    this.camPosIndex++;
+    this.move();
+  }
+
+  moveBack = () => {
+    this.camPosIndex--;
+    this.move();
+  }
+ 
+  move = () => {
+    let camPos = this.spline.getPoint(this.camPosIndex / this.numOfPoints);
+    let camRot = this.spline.getTangent(this.camPosIndex);
+
+    this.camera.position.x = camPos.x;
+    this.camera.position.y = camPos.y;
+    this.camera.position.z = camPos.z;
+
+    this.camera.rotation.x = camRot.x;
+    this.camera.rotation.y = camRot.y;
+    this.camera.rotation.z = camRot.z;
+
+    this.camera.lookAt(this.spline.getPoint((this.camPosIndex + 1) / this.numOfPoints));
+  }
 
   render() {
     return (
