@@ -6,8 +6,7 @@ import { Colours, size } from "../Components/Global/global.styles";
 import TopNavbar from "../Components/TopNavbar/TopNavbar";
 import { PageURls } from "../Utility/Misc";
 
-const HomeWrapper = styled.div`
-`;
+const HomeWrapper = styled.div``;
 
 const HomePageSection = styled.div`
   height: 100vh;
@@ -26,7 +25,7 @@ const FlexDiv = styled.div`
   height: 100%;
 
   justify-content: center;
-  align-items: center;
+  align-items: baseline;
 `;
 
 export const Title = styled.h1`
@@ -38,20 +37,26 @@ export const Title = styled.h1`
 const HomePageText = styled.p``;
 
 const HomePageTextWrapper = styled.div`
-  width: 60%;
+  /* width: 60%; */
   @media (max-width: ${size.tabletL}) {
-    width: 90%;
+    /* width: 90%; */
   }
 `;
 
+export const TwoColumnGrid = styled.div`
+  display: grid;
+  grid-template-columns: 3fr 5fr;
+  grid-column-gap: 1rem;
+  padding: 1rem;
+`;
 const HomePageLinksWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  width: 60%;
+  /* width: 60%; */
   justify-content: space-around;
 
   @media (max-width: ${size.tabletL}) {
-    width: 90%;
+    /* width: 90%; */
   }
 `;
 
@@ -59,6 +64,8 @@ const HomePageLinks = styled(StyledLinks)`
   font-size: 1.5rem;
   text-decoration: underline;
   text-align: center;
+  padding: 1rem;
+  padding-left: 0;
 `;
 
 const Home = () => {
@@ -66,63 +73,70 @@ const Home = () => {
     <Layout>
       <HomeWrapper>
         <HomePageSection isFullscreenInMobile>
-          <FlexDiv>
-            <Title> With Microbes</Title>
-            <HomePageTextWrapper>
-              <HomePageText>
-                Humans are part of nature, cities are part of nature and
-                microbes are integral to how we live in nature. Once we
-                understand that we live with microbes, we can see urban green
-                spaces not as passive backdrops but a network of caring
-                relationships, by imagining a future where urban agriculture is
-                integral to public space.
-              </HomePageText>
-            </HomePageTextWrapper>
-            <HomePageLinksWrapper>
-              <HomePageLinks to={PageURls.NOW.url}>
-                {" "}
-                explore where we are now
-              </HomePageLinks>
-              <HomePageLinks to={PageURls.FUTURE.url}>
-                {" "}
-                explore a possible future
-              </HomePageLinks>
-            </HomePageLinksWrapper>
-          </FlexDiv>
+          <TwoColumnGrid>
+            <div>
+              <HomePageText> With Microbes</HomePageText>
+            </div>
+            <FlexDiv>
+              <HomePageTextWrapper>
+                <HomePageText>
+                  A series of interactive digital walks reveal the microbial
+                  diversity that exists within the urban spaces that we inhabit
+                  daily: our homes, our streets and our public transport
+                  infrastructure to imagine a future where urban agriculture is
+                  essential to public life. You will encounter urban food
+                  gardens that exist as bridges between human and microbial
+                  life. Inside them, you can breathe in, touch and eat microbes
+                  and participate in feeding, tending and respecting the soil in
+                  our cities - a sacred living material that is essential to all
+                  lifeforms.
+                </HomePageText>
+              </HomePageTextWrapper>
+              <HomePageLinksWrapper>
+                <HomePageLinks to={PageURls.NOW.url}>
+                  {" "}
+                  explore where we are now
+                </HomePageLinks>
+                <HomePageLinks to={PageURls.FUTURE.url}>
+                  {" "}
+                  explore a possible future
+                </HomePageLinks>
+              </HomePageLinksWrapper>
+            </FlexDiv>
+          </TwoColumnGrid>
         </HomePageSection>
 
         <HomePageSection>
+          <TwoColumnGrid>
+            <div>
+              <HomePageText> With Microbes</HomePageText>
+            </div>
+            <FlexDiv>
+              <HomePageTextWrapper>
+                <HomePageText>
+                  Before we can establish new relationships of care within the
+                  built environment, we need to first acknowledge that our
+                  cities are inhabited not only by humans, but also by diverse
+                  communities of microorganisms that are essential to our
+                  survival. This project explores the potential of this emerging
+                  technology and questions whether it can help us build closer
+                  connections with the natural world that surrounds us. If this
+                  data can demonstrate the entanglement of human and microbial
+                  life then it can provide architects and urban planners with a
+                  new perspective needed to build cities that cater for all
+                  forms of life. If we integrated urban agriculture into the
+                  fabric of our cities, it might encourage greater care between
+                  humans and microorganisms.
+                </HomePageText>
+                <Title> Collaborators</Title>
+                <HomePageText>
+                  Cream Projects, Natural History Museum, RBKC, Oxford Nanopore
+                  Technologies
+                </HomePageText>
+              </HomePageTextWrapper>
+            </FlexDiv>
+          </TwoColumnGrid>
           <TopNavbar />
-          <FlexDiv>
-            <HomePageTextWrapper>
-              <Title> The Project</Title>
-              <HomePageText>
-                Hendit qui nobitem rendaecuptur abo. Nem ipicaerum rem
-                velliquiate quia nihiliqui temqui consequi debit ipit quia volum
-                non et pa con necto tecepello ex excepelecto volorro etur? Andam
-                acea quassedit des es ent.
-              </HomePageText>
-              <Title> The Proposal</Title>
-              <HomePageText>
-                Hendit qui nobitem rendaecuptur abo. Nem ipicaerum rem
-                velliquiate quia nihiliqui temqui consequi debit ipit quia volum
-                non et pa con necto tecepello ex excepelecto volorro etur? Andam
-                acea quassedit des es ent.Mus quis ut que coremped eum remperion
-                conet volori quiberum
-              </HomePageText>
-              <Title> The Biological Data</Title>
-              <HomePageText>
-                Hendit qui nobitem rendaecuptur abo. Nem ipicaerum rem
-                velliquiate quia nihiliqui temqui consequi debit ipit quia volum
-                non et pa con necto tecepello ex excepelecto volorro etur?
-              </HomePageText>
-              <Title> Collaborators</Title>
-              <HomePageText>
-                Cream Projects, Natural History Museum, RBKC, Oxford Nanopore
-                Technologies
-              </HomePageText>
-            </HomePageTextWrapper>
-          </FlexDiv>
         </HomePageSection>
       </HomeWrapper>
     </Layout>

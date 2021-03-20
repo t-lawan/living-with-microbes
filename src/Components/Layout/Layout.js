@@ -9,10 +9,10 @@ export const Main = styled.section`
   overflow: hidden;
 `
 const Layout = props => {
-  let description = "Living With Microbes";
+  let description = props.description ? props.description : "A series of interactive digital walks using metagenomics to reveal food gardens as spaces for mutual care and imagine a future where urban agriculture is essential to public life.";
   let url = "";
-  let title = "Living With Microbes";
-
+  let title = props.title ? props.title : "With Microbes: From Fear of Germs to Mutual Care via Urban Food Growing" ;
+  console.log('TITLE', title);
   return (
     <HelmetProvider>
       <Helmet

@@ -17,7 +17,7 @@ const LoadingBarWrapper = styled.div`
 const LoadingWrapper = styled.div`
   width: 100%;
   height: 0.3rem;
-  background: ${Colours.dark_grey};
+  background: ${Colours.snot_green};
 `;
 const LoadingProgressWrapper = styled.div`
   bottom: 0;

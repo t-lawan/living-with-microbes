@@ -21,7 +21,7 @@ const TwoColumnMain = styled(Main)`
 
 const TwoColumnLayout = props => {
   return (
-    <Layout>
+    <Layout title={props.title} description={props.description}>
       <TwoColumnLayoutWrapper>
         <SideNavbarWrapper>
           <SideNavbar />

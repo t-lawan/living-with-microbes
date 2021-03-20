@@ -10,19 +10,24 @@ import { stopLoading } from "../../Store/action";
 const TopNavbarWrapper = styled.div`
   width: 100vw;
   padding: 1rem 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 `;
 
 const TopNavbarLink = styled(StyledLinks)`
     padding: 0 0.5rem;
-    text-decoration: ${props => props.isSelected ?  "none" : "underline" };
+    margin-right: 3rem;
+    /* text-decoration: ${props => props.isSelected ?  "none" : "underline" }; */
+    display: ${props => props.isSelected ?  "none" : "inherit" };
 `
 
 const LinkWrapper = styled.div`
   display: flex;
-  width: 100%;
+  width: 62.5%;
 
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: start;
   @media (max-width: ${size.tabletL}) {
     justify-content: center;
   }

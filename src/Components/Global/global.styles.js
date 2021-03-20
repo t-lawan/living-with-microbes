@@ -22,7 +22,8 @@ export const Colours = {
   grey: "#CCD6D7",
   dark_grey: "	#707070",
   green: "hsl(115, 100%, 42%)",
-  environment_background: "#BABAB8"
+  environment_background: "#BABAB8",
+  snot_green: '#deeac5'
 };
 
 export const GlobalStyle = createGlobalStyle`
@@ -126,8 +127,9 @@ p, li, a, span{
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  font-size: 1.5rem  !important;
-  line-height: 1.3;
+  font-size: 1.6em  !important;
+  ${'' /* letter-spacing: 0.1em; */}
+  line-height: 1.01em;
   font-weight: 100 !important;
   color: ${Colours.dark_grey};
   @media (max-width: ${size.tabletL}) {
