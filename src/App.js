@@ -4,9 +4,10 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { reducer } from './Store/reducer';
 import Home from './Pages/Home';
-import Research from './Pages/Research';
-import Proposal from './Pages/Proposal';
+import Research from './Pages/Now';
+import Future from './Pages/Future';
 import { PageURls } from './Utility/Misc';
+import Now from './Pages/Now';
 
 
 const store = createStore(
@@ -20,8 +21,8 @@ function App() {
     <Provider store={store}>
       <Router>
         <Switch>
-          <Route path={PageURls.NOW.url} exact component={Research} />
-          <Route path={PageURls.FUTURE.url} exact component={Proposal} />
+          <Route path={PageURls.NOW.url} exact component={Now} />
+          <Route path={PageURls.FUTURE.url} exact component={Future} />
           <Route path="/" exact component={Home} />
         </Switch>
       </Router>
