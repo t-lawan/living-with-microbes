@@ -10,6 +10,8 @@ import { EnvironmentFilter } from "../../Utility/Misc.js";
 import { loading, hasLoaded, isLoading } from "../../Store/action.js";
 import Text from '../../Assets/Models/proposal-text.glb'
 import Buildings from '../../Assets/Models/proposal-context.glb'
+import { EnvironmentNavbarWrapper } from "./NowEnvironment.js";
+import TopNavbar from "../TopNavbar/TopNavbar.js";
 const style = {
     height: '100%'
 }
@@ -379,6 +381,9 @@ class FutureEnvironment extends Component {
           style={style}
           ref={ref => (this.mount = ref)}
         />
+        <EnvironmentNavbarWrapper>
+          <TopNavbar isOnLoadingPage={false} />
+        </EnvironmentNavbarWrapper>
       </>
     );
   }

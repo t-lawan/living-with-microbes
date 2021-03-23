@@ -11,6 +11,7 @@ import { loading, hasLoaded, isLoading } from "../../Store/action.js";
 import Text from '../../Assets/Models/research-text.glb'
 import Buildings from '../../Assets/Models/research-context.glb'
 import Data from '../../Assets/Models/research-data.glb'
+import TopNavbar from "../TopNavbar/TopNavbar.js";
 const style = {
     height: '100%'
 }
@@ -20,6 +21,12 @@ const ProposalEnvironmentWrapper = styled.div`
   height: 100
 `;
 
+export const EnvironmentNavbarWrapper = styled.div`
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 7.5%;
+`
 // let Text = 'https://dt8c09yje207j.cloudfront.net/researchtext.glb'
 // let Buildings = 'https://dt8c09yje207j.cloudfront.net/researchfinaljoinmat.glb'
 // let Data = "https://dt8c09yje207j.cloudfront.net/researchdata.glb"
@@ -371,6 +378,9 @@ class NowEnvironment extends Component {
           style={style}
           ref={ref => (this.mount = ref)}
         />
+        <EnvironmentNavbarWrapper>
+          <TopNavbar isOnLoadingPage={false} />
+        </EnvironmentNavbarWrapper>
       </>
     );
   }
