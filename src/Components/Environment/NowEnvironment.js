@@ -8,9 +8,9 @@ import styled from "styled-components";
 import { Colours } from "../Global/global.styles.js";
 import { EnvironmentFilter } from "../../Utility/Misc.js";
 import { loading, hasLoaded, isLoading } from "../../Store/action.js";
-import Text from '../../Assets/Models/researchtext.glb'
-import Buildings from '../../Assets/Models/researchfinaljoinmat.glb'
-import Data from '../../Assets/Models/researchdata.glb'
+import Text from '../../Assets/Models/research-text.glb'
+import Buildings from '../../Assets/Models/research-context.glb'
+import Data from '../../Assets/Models/research-data.glb'
 const style = {
     height: '100%'
 }
@@ -83,7 +83,7 @@ class NowEnvironment extends Component {
       antialias: true,
       premultipliedAlpha: true
     });
-    this.renderer.setClearColor(Colours.grey);
+    this.renderer.setClearColor(Colours.background);
     this.renderer.setSize(this.mount.clientWidth, this.mount.clientHeight);
     this.mount.appendChild(this.renderer.domElement); // mount using React ref
   };
@@ -106,17 +106,49 @@ class NowEnvironment extends Component {
   };
 
   setupLights = () => {
-    let light = new THREE.AmbientLight(0xffffff, 1.5);
+
+    let light = new THREE.AmbientLight (0xffffff, 1);
     this.scene.add(light);
 
-    let light2 = new THREE.PointLight(0xffffff, 0);
+    let light2 = new THREE.PointLight (0xfbffd4, 0);
+    light2.position.z = 3;
+    light2.position.x = 0;
+    light2.position.y = 0;
     this.scene.add(light2);
-
-    let light3 = new THREE.DirectionalLight(0xffffff, 0);
-    light3.position.z = 500;
-    light3.position.x = 0;
-    light3.position.y = 20;
+    
+    let light3 = new THREE.DirectionalLight (0xfbffd4, 0);
+    light3.position.z = -1;
+    light3.position.x = 3;
+    light3.position.y = 1;
     this.scene.add(light3);
+
+    const width = 0.15;
+    const height = 0.15;
+    const intensity = 50000;
+    const rectLight = new THREE.RectAreaLight( 0xfbffd4, intensity,  width, height );
+    rectLight.position.set( -15, 10, 7);
+
+    rectLight.lookAt(-15, 0, 5 );
+    this.scene.add( rectLight );
+
+
+    const width1 = 0.15;
+    const height1 = 0.15;
+    const intensity1 = 5000;
+    const rectLight1 = new THREE.RectAreaLight( 0xfbffd4, intensity1,  width1, height1 );
+    rectLight1.position.set( -87, 5, -85);
+
+    rectLight1.lookAt(-87, 0, -85);
+    this.scene.add( rectLight1 );
+
+    const width2 = 0.15;
+    const height2 = 0.15;
+    const intensity2 = 3000;
+    const rectLight2 = new THREE.RectAreaLight( 0xfbffd4, intensity2,  width2, height2 );
+    rectLight2.position.set( -210, 5, -100);
+
+    rectLight2.lookAt(-210, 0, -100);
+    this.scene.add( rectLight2 );
   };
 
   setupLoadingManager = () => {
@@ -186,42 +218,26 @@ class NowEnvironment extends Component {
 
   setupCameraCurve = () => {
     this.spline = new THREE.CatmullRomCurve3([
-      new THREE.Vector3(2,-1,-1),
-           
-      new THREE.Vector3(1.5,-1.1,-8),
-      new THREE.Vector3(-0.6,-1.5,-11),
-      new THREE.Vector3(-0.4,-1.5,-12),
-
-      new THREE.Vector3(-2.2,-1.5,-16),
-      new THREE.Vector3(-3,-1.5,-25),
-
-      new THREE.Vector3(0.5,-1.3,-30),
-      new THREE.Vector3(0.5,-1.3,-50),
-      new THREE.Vector3(1,-1.3,-65),
-      new THREE.Vector3(-8,-1.3,-68),
-      new THREE.Vector3(-20,-1.3,-70),
-      new THREE.Vector3(-40,-1,-70),
-      new THREE.Vector3(-60,-1,-70),
-      new THREE.Vector3(-70,-1,-70),
-      new THREE.Vector3(-75,-1,-70),
-      new THREE.Vector3(-83,-1,-70),
-
-      new THREE.Vector3(-88,-1,-73),
-      new THREE.Vector3(-88,-1,-74),
-      new THREE.Vector3(-88,-1.5,-76),
-      new THREE.Vector3(-89,-1.5,-77),
-
-      new THREE.Vector3(-95,-1,-73),
-      new THREE.Vector3(-110,-1,-72),
-      new THREE.Vector3(-150,-1,-72),
+      new THREE.Vector3(3,-1,-2),
+      new THREE.Vector3(3,-1,-4),
+      new THREE.Vector3(2,-1,-8),
+      new THREE.Vector3(-0.8,-1,-14),
+      new THREE.Vector3(-0.9,-1,-16),
+      new THREE.Vector3(1,-1,-30),
+      new THREE.Vector3(1,-1,-45),
+      new THREE.Vector3(-20,-1.1,-56),
+      new THREE.Vector3(-60,-1.1,-62),   
+      new THREE.Vector3(-85,-1.1,-71),
+      new THREE.Vector3(-86,-1.1,-72.5),     
+      new THREE.Vector3(-93,-1,-72.5),
+      new THREE.Vector3(-110,-1,-72.5),
+      new THREE.Vector3(-155,-1,-72),
       new THREE.Vector3(-170,-1,-72),
-      new THREE.Vector3(-190,-1,-72),
-      new THREE.Vector3(-195,-1,-72),
-      new THREE.Vector3(-195,-1,-80),
-      new THREE.Vector3(-195,-1,-85),
-      new THREE.Vector3(-195,-1,-99),
-      new THREE.Vector3(-198,-1.3,-99),
-      new THREE.Vector3(-203,-1.3,-99),
+      new THREE.Vector3(-175,-1,-71), 
+      new THREE.Vector3(-193,-1.4,-70),
+      new THREE.Vector3(-195,-1.4,-88),   
+      new THREE.Vector3(-197,-1.4,-98),
+      new THREE.Vector3(-200,-1.4,-99), 
     ], false);
 
 

@@ -23,7 +23,8 @@ export const Colours = {
   dark_grey: "	#707070",
   green: "hsl(115, 100%, 42%)",
   environment_background: "#BABAB8",
-  snot_green: '#deeac5'
+  snot_green: '#deeac5',
+  background: '#d4d0d8'
 };
 
 export const GlobalStyle = createGlobalStyle`
