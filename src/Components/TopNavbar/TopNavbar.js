@@ -15,6 +15,7 @@ const TopNavbarWrapper = styled.div`
   justify-content: flex-end;
   @media (max-width: ${size.tabletL}) {
   justify-content: flex-start;
+  padding: 1rem 0.5rem;
 
   }
 `;

@@ -37,6 +37,7 @@ export const Title = styled.p`
 const CollaboratorText = styled.p`
   margin: 0;
   padding: 0;
+  margin-bottom: 0.5rem;
 `
 const HomePageText = styled.p``;
 
