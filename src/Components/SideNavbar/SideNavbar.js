@@ -68,10 +68,6 @@ const SideNavbar = props => {
 
 
       </FilterWrapper>
-
-      {!IsPage(PageURls.NOW.id, location.pathname) ?  <StyledLinks to={PageURls.NOW.url}>go to now</StyledLinks> : null}
-      {!IsPage(PageURls.FUTURE.id, location.pathname) ?  <StyledLinks to={PageURls.FUTURE.url}>go to future</StyledLinks> : null}
-        <StyledLinks to={"/"}>about</StyledLinks>
       </LinkWrapper>
     </SideNavbarWrapper>
   );

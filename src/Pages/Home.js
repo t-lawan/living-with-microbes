@@ -28,12 +28,16 @@ const FlexDiv = styled.div`
   align-items: baseline;
 `;
 
-export const Title = styled.h1`
+export const Title = styled.p`
   text-align: center;
   margin: 0;
   padding: 0;
 `;
 
+const CollaboratorText = styled.p`
+  margin: 0;
+  padding: 0;
+`
 const HomePageText = styled.p``;
 
 const HomePageTextWrapper = styled.div`
@@ -48,6 +52,11 @@ export const TwoColumnGrid = styled.div`
   grid-template-columns: 3fr 5fr;
   grid-column-gap: 1rem;
   padding: 1rem;
+  @media (max-width: ${size.tabletL}) {
+    /* width: 90%; */
+    grid-template-columns: 1fr;
+
+  }
 `;
 const HomePageLinksWrapper = styled.div`
   display: flex;
@@ -57,15 +66,20 @@ const HomePageLinksWrapper = styled.div`
 
   @media (max-width: ${size.tabletL}) {
     /* width: 90%; */
+    flex-direction: column;
+    align-items: baseline;
   }
 `;
 
 const HomePageLinks = styled(StyledLinks)`
-  font-size: 1.5rem;
+  /* font-size: 1.5rem; */
   text-decoration: underline;
   text-align: center;
   padding: 1rem;
   padding-left: 0;
+  @media (max-width: ${size.tabletL}) {
+    padding: 0;
+  }
 `;
 
 const Home = () => {
@@ -94,11 +108,9 @@ const Home = () => {
               </HomePageTextWrapper>
               <HomePageLinksWrapper>
                 <HomePageLinks to={PageURls.NOW.url}>
-                  {" "}
                   explore where we are now
                 </HomePageLinks>
                 <HomePageLinks to={PageURls.FUTURE.url}>
-                  {" "}
                   explore a possible future
                 </HomePageLinks>
               </HomePageLinksWrapper>
@@ -128,11 +140,18 @@ const Home = () => {
                   fabric of our cities, it might encourage greater care between
                   humans and microorganisms.
                 </HomePageText>
-                <Title> Collaborators</Title>
-                <HomePageText>
-                  Cream Projects, Natural History Museum, RBKC, Oxford Nanopore
-                  Technologies
-                </HomePageText>
+                <CollaboratorText> Collaborators</CollaboratorText>
+                <CollaboratorText>
+                Concept and Design: Ioana Man
+                </CollaboratorText>
+                <CollaboratorText>
+                Web experience and Development: Cream Projects and Akinsola Lawanson
+                </CollaboratorText>
+                <CollaboratorText>
+                Metagenomic Analysis: Darren
+                Chooneea, NHM Molecular Lab
+                Base 3d Geometry: AccuCities
+                </CollaboratorText>
               </HomePageTextWrapper>
             </FlexDiv>
           </TwoColumnGrid>

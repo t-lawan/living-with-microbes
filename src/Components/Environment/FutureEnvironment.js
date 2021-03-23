@@ -8,8 +8,10 @@ import styled from "styled-components";
 import { Colours } from "../Global/global.styles.js";
 import { EnvironmentFilter } from "../../Utility/Misc.js";
 import { loading, hasLoaded, isLoading } from "../../Store/action.js";
-import Text from '../../Assets/Models/proposaltext.glb'
-import Buildings from '../../Assets/Models/proposalscenefinaljoinmat.glb'
+import Text from '../../Assets/Models/proposal-text.glb'
+import Buildings from '../../Assets/Models/proposal-context.glb'
+import { EnvironmentNavbarWrapper } from "./NowEnvironment.js";
+import TopNavbar from "../TopNavbar/TopNavbar.js";
 const style = {
     height: '100%'
 }
@@ -95,7 +97,7 @@ class FutureEnvironment extends Component {
       antialias: true,
       premultipliedAlpha: true
     });
-    this.renderer.setClearColor(Colours.grey);
+    this.renderer.setClearColor(Colours.background);
     this.renderer.setSize(this.mount.clientWidth, this.mount.clientHeight);
     this.mount.appendChild(this.renderer.domElement); // mount using React ref
   };
@@ -118,17 +120,53 @@ class FutureEnvironment extends Component {
   };
 
   setupLights = () => {
-    let light = new THREE.AmbientLight(0xffffff, 1.5);
+    let light = new THREE.AmbientLight (0xFFFFFF, 1);
     this.scene.add(light);
 
-    let light2 = new THREE.PointLight(0xffffff, 0);
+    let light2 = new THREE.PointLight (0xFFFFFF, 0);
     this.scene.add(light2);
-
-    let light3 = new THREE.DirectionalLight(0xffffff, 0);
+    
+    let light3 = new THREE.DirectionalLight (0xFFffff, 0);
     light3.position.z = 10;
     light3.position.x = 10;
     light3.position.y = 10;
     this.scene.add(light3);
+
+    const width = 0.15;
+    const height = 0.15;
+    const intensity = 5000;
+    const rectLight = new THREE.RectAreaLight( 0xfbffd4, intensity,  width, height );
+    rectLight.position.set( 0, 10, -10);
+
+    rectLight.lookAt(0, 0, -10 );
+    this.scene.add( rectLight );
+
+    const width1 = 0.15;
+    const height1 = 0.15;
+    const intensity1 = 5000;
+    const rectLight1 = new THREE.RectAreaLight( 0xfbffd4, intensity1,  width1, height1 );
+    rectLight1.position.set( -10, 10, 7 );
+
+    rectLight1.lookAt(-10, 0, 7);
+    this.scene.add( rectLight1 );
+
+    const width2 = 0.15;
+    const height2 = 0.15;
+    const intensity2 = 5000;
+    const rectLight2 = new THREE.RectAreaLight( 0xfbffd4, intensity2,  width2, height2 );
+    rectLight2.position.set( -20, 10, 122 );
+
+    rectLight2.lookAt(-20, 0, 122);
+    this.scene.add( rectLight2 );
+
+    const width3 = 0.15;
+    const height3 = 0.15;
+    const intensity3 = 5000;
+    const rectLight3 = new THREE.RectAreaLight( 0xfbffd4, intensity3,  width3, height3 );
+    rectLight3.position.set( -38, 10, 190 );
+
+    rectLight3.lookAt(-38, 0, 190);
+    this.scene.add( rectLight3 );
   };
 
   setupLoadingManager = () => {
@@ -185,20 +223,23 @@ class FutureEnvironment extends Component {
 
   setupCameraCurve = () => {
     this.spline = new THREE.CatmullRomCurve3([
-      new THREE.Vector3(0.5,-1,8), 
-      new THREE.Vector3(0.2,-1,6),   
-      new THREE.Vector3(-1,-1,6),  
-      new THREE.Vector3(-3,-1,6),     
-      new THREE.Vector3(-10,-1,6),
-      new THREE.Vector3(-25,-1,7),
-      new THREE.Vector3(-35,-1,15),
-      new THREE.Vector3(-38,-0.5,140),
 
-      new THREE.Vector3(-38,-0.5,165),
-      new THREE.Vector3(-38.7,-0.5,172),
-      new THREE.Vector3(-37,-0.5,190)
+      new THREE.Vector3(-0.5,-1,7), 
+      new THREE.Vector3(-0.5,-1,6),   
+      new THREE.Vector3(-2.2,-1,3),  
+      new THREE.Vector3(-5.5,-1,4.2),   
+      new THREE.Vector3(-8,-1,4.5),     
+      new THREE.Vector3(-15,-1,6),
+      new THREE.Vector3(-25,-0.5,8),
+      new THREE.Vector3(-25,-0.5,15),
+      new THREE.Vector3(-20,-0.5,80),
+      new THREE.Vector3(-20,-0.5,100),
+      new THREE.Vector3(-21,-1,118),
+      new THREE.Vector3(-25,-1,160),
+      new THREE.Vector3(-32,-0.5,182),
+      new THREE.Vector3(-34,-0.5,184),
+      new THREE.Vector3(-40,-0.3,185),
     ], false);
-
 
     const points = this.spline.getPoints(100);
     const geometry = new THREE.BufferGeometry().setFromPoints(points);
@@ -340,6 +381,9 @@ class FutureEnvironment extends Component {
           style={style}
           ref={ref => (this.mount = ref)}
         />
+        <EnvironmentNavbarWrapper>
+          <TopNavbar isOnLoadingPage={false} />
+        </EnvironmentNavbarWrapper>
       </>
     );
   }

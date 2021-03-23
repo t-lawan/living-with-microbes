@@ -33,7 +33,8 @@ export const reducer = (state = initalState, action) => {
         return {
           ...state,
           is_loading: true,
-          show_loading_page: true
+          show_loading_page: true,
+          has_loaded: false,
         };
       case HIDE_LOADING_PAGE:
         return {
