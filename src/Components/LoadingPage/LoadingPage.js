@@ -5,7 +5,7 @@ import LoadingBar from "../LoadingBar/LoadingBar";
 import { Colours, size } from "../Global/global.styles";
 import { useLocation } from "react-router-dom";
 import { IsPage, PageURls } from "../../Utility/Misc";
-import { Title, TwoColumnGrid } from "../../Pages/Home";
+import { TwoColumnGrid } from "../../Pages/Home";
 import TopNavbar from "../TopNavbar/TopNavbar";
 import { hideLoadingPage } from "../../Store/action";
 import BackgroundNow from '../../Assets/LoadingBackground_Now.png'

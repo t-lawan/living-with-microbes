@@ -13,6 +13,10 @@ const TopNavbarWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  @media (max-width: ${size.tabletL}) {
+  justify-content: flex-start;
+
+  }
 `;
 
 const TopNavbarLink = styled(StyledLinks)`
@@ -20,6 +24,9 @@ const TopNavbarLink = styled(StyledLinks)`
     margin-right: 3rem;
     /* text-decoration: ${props => props.isSelected ?  "none" : "underline" }; */
     display: ${props => props.isSelected ?  "none" : "inherit" };
+    @media (max-width: ${size.tabletL}) {
+      margin: 0;
+     }
 `
 
 const LinkWrapper = styled.div`
@@ -29,7 +36,9 @@ const LinkWrapper = styled.div`
   flex-direction: row;
   justify-content: start;
   @media (max-width: ${size.tabletL}) {
-    justify-content: center;
+    justify-content: flex-start;
+  /* justify-content: flex-start; */
+
   }
 `;
 

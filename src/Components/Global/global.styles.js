@@ -123,28 +123,27 @@ p, li, a, span{
   margin-left: 0;
   margin-right: 0;
   margin-top: 0;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   padding-bottom: 0;
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  font-size: 1.6em  !important;
-  ${'' /* letter-spacing: 0.1em; */}
+  font-size: 1.9rem;
+  letter-spacing: 0.1em;
   line-height: 1.01em;
-  font-weight: 100 !important;
+  ${'' /* font-weight: 100 !important; */}
   color: ${Colours.dark_grey};
-  @media (max-width: ${size.tabletL}) {
-    font-size: 1rem  !important;
-
+  @media (max-width: ${size.mobileXL}) {
+    font-size: 1.1rem;
   }
 }
 
-p {
+${'' /* p {
   line-height: 1.35;
   font-size: 1.05rem;
   margin-bottom: 1.5rem;
   
-}
+} */}
 
 
 `;
