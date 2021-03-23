@@ -28,7 +28,7 @@ const FlexDiv = styled.div`
   align-items: baseline;
 `;
 
-export const Title = styled.h1`
+export const Title = styled.h2`
   text-align: center;
   margin: 0;
   padding: 0;
