@@ -30,7 +30,7 @@ export const Colours = {
 export const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: 'NHaasGroteskDSPro';
-    src: url(${NHaasGroteskDSPro}) format('ttf');
+    src: url(${NHaasGroteskDSPro}) format('truetype');
     font-weight: normal;
     font-style: normal;
 }
