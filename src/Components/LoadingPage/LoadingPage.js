@@ -17,7 +17,9 @@ const LoadingPageWrapper = styled.div`
   height: 100vh;
   width: 100vw;
   background: ${Colours.grey};
-  background-image: url(${props => props.image});;
+  background-image: url(${props => props.image});
+  background-size: cover;
+  background-repeat: no-repeat;
   z-index: 100;
 `;
 
