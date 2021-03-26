@@ -86,7 +86,7 @@ class FutureEnvironment extends Component {
   setupScene = () => {
     // get container dimensions and use them for scene sizing
     this.scene = new THREE.Scene();
-    this.scene.fog = new THREE.Fog(0xBABAB8, 30, 40);
+    this.scene.fog = new THREE.Fog(0xBABAB8, -20, 80);
     this.setupCamera();
     // this.setupControl();
     this.setupRenderer();
@@ -327,11 +327,9 @@ class FutureEnvironment extends Component {
   }
 
   onTouchMove = event => {
-    console.log('onTouchMove', )
     let position = event.changedTouches[0].clientY;
     let threshold = 1;
     if((position >= this.lastTouchPosition + threshold ) && this.camPosIndex > 0) {
-      console.log()
       this.moveBack()
     } else if((position + threshold < this.lastTouchPosition) && this.camPosIndex < this.numOfPoints - 1) {
       this.moveForward()

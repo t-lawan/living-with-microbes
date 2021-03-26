@@ -79,7 +79,7 @@ class NowEnvironment extends Component {
   setupScene = () => {
     // get container dimensions and use them for scene sizing
     this.scene = new THREE.Scene();
-    this.scene.fog = new THREE.Fog(0xBABAB8, 75, 80);
+    this.scene.fog = new THREE.Fog(0xBABAB8, -20, 80);
     this.setupCamera();
     // this.setupControl();
     this.setupRenderer();
@@ -316,60 +316,48 @@ class NowEnvironment extends Component {
 
 
   onTouchMove = event => {
-    if (this.camPosIndex < this.numOfPoints - 1) {
-      this.camPosIndex++;
-
-      let camPos = this.spline.getPoint(this.camPosIndex / this.numOfPoints);
-      let camRot = this.spline.getTangent(this.camPosIndex);
-
-      this.camera.position.x = camPos.x;
-      this.camera.position.y = camPos.y;
-      this.camera.position.z = camPos.z;
-
-      this.camera.rotation.x = camRot.x;
-      this.camera.rotation.y = camRot.y;
-      this.camera.rotation.z = camRot.z;
-
-      this.camera.lookAt(this.spline.getPoint((this.camPosIndex + 1) / this.numOfPoints));
+    let position = event.changedTouches[0].clientY;
+    let threshold = 1;
+    if((position >= this.lastTouchPosition + threshold ) && this.camPosIndex > 0) {
+      this.moveBack()
+    } else if((position + threshold < this.lastTouchPosition) && this.camPosIndex < this.numOfPoints - 1) {
+      this.moveForward()
     }
+    this.lastTouchPosition = position;
   }
 
   onMouseWheel = event => {
-    // let numOfPoints = 700;
     if (event.deltaY < 0 && this.camPosIndex < this.numOfPoints - 1) {
-      this.camPosIndex++;
-
-      let camPos = this.spline.getPoint(this.camPosIndex / this.numOfPoints);
-      let camRot = this.spline.getTangent(this.camPosIndex);
-
-      this.camera.position.x = camPos.x;
-      this.camera.position.y = camPos.y;
-      this.camera.position.z = camPos.z;
-
-      this.camera.rotation.x = camRot.x;
-      this.camera.rotation.y = camRot.y;
-      this.camera.rotation.z = camRot.z;
-
-      this.camera.lookAt(this.spline.getPoint((this.camPosIndex + 1) / this.numOfPoints));
+      this.moveForward()
     } else if (event.deltaY > 0 && this.camPosIndex > 0) {
-      this.camPosIndex--;
-      let camPos = this.spline.getPoint(this.camPosIndex / this.numOfPoints);
-      let camRot = this.spline.getTangent(this.camPosIndex);
-
-      this.camera.position.x = camPos.x;
-      this.camera.position.y = camPos.y;
-      this.camera.position.z = camPos.z;
-
-      this.camera.rotation.x = camRot.x;
-      this.camera.rotation.y = camRot.y;
-      this.camera.rotation.z = camRot.z;
-
-      this.camera.lookAt(this.spline.getPoint((this.camPosIndex + 1) / this.numOfPoints));
+      this.moveBack();
     }
-
-    //   camera.position.z += event.deltaY * 0.01;
   };
 
+  moveForward = () => {
+    this.camPosIndex++;
+    this.move();
+  }
+
+  moveBack = () => {
+    this.camPosIndex--;
+    this.move();
+  }
+ 
+  move = () => {
+    let camPos = this.spline.getPoint(this.camPosIndex / this.numOfPoints);
+    let camRot = this.spline.getTangent(this.camPosIndex);
+
+    this.camera.position.x = camPos.x;
+    this.camera.position.y = camPos.y;
+    this.camera.position.z = camPos.z;
+
+    this.camera.rotation.x = camRot.x;
+    this.camera.rotation.y = camRot.y;
+    this.camera.rotation.z = camRot.z;
+
+    this.camera.lookAt(this.spline.getPoint((this.camPosIndex + 1) / this.numOfPoints));
+  }
   render() {
     return (
       <>
