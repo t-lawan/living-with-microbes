@@ -19,7 +19,7 @@ export const size = {
 export const Colours = {
   purple: "#a841f4",
   yellow: "#E4EE3F",
-  grey: "#CCD6D7",
+  grey: "#cac6ce",
   dark_grey: "	#707070",
   green: "hsl(115, 100%, 42%)",
   environment_background: "#BABAB8",
@@ -129,8 +129,8 @@ p, li, a, span{
   padding-right: 0;
   padding-top: 0;
   font-size: 1.9rem;
-  letter-spacing: 0.1em;
-  line-height: 1.01em;
+  letter-spacing: 0.03em;
+  line-height: 1.05em;
   ${'' /* font-weight: 100 !important; */}
   color: ${Colours.dark_grey};
   @media (max-width: ${size.mobileXL}) {

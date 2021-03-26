@@ -4,7 +4,7 @@ import TwoColumnLayout from "../Components/Layout/TwoColumnLayout";
 import NowEnvironment from "../Components/Environment/NowEnvironment";
 
 const Now = () => {
-  let title = "Now | With Microbes"
+  let title = "Walk 1: Where are we now?"
   let description = "This virtual walk takes you through three food gardens inviting you to see the microorganisms that live within and around them."
 
   return (
