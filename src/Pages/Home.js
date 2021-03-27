@@ -1,10 +1,11 @@
-import * as React from "react";
+import React, { useRef } from "react";
 import Layout from "../Components/Layout/Layout";
 import styled from "styled-components";
 import { StyledLinks } from "../Components/SideNavbar/SideNavbar";
 import { Colours, size } from "../Components/Global/global.styles";
 import TopNavbar from "../Components/TopNavbar/TopNavbar";
 import { PageURls } from "../Utility/Misc";
+import { useLocation } from "react-router-dom";
 
 const HomeWrapper = styled.div``;
 
@@ -56,7 +57,7 @@ export const TwoColumnGrid = styled.div`
   display: grid;
   grid-template-columns: 3fr 5fr;
   grid-column-gap: 1rem;
-  grid-row-gap: 5rem;
+  grid-row-gap: 7rem;
   padding: 1rem;
   @media (max-width: ${size.tabletL}) {
     /* width: 90%; */
@@ -89,9 +90,25 @@ const HomePageLinks = styled(StyledLinks)`
 `;
 
 const Home = () => {
+  let location = useLocation();
+  const aboutSection = useRef(null);
+  const homeWrapper = useRef(null);
+
+  if (location.hash === "#about" && aboutSection && homeWrapper) {
+    setTimeout(() => {
+      console.log('ABOUT', aboutSection.current)
+      console.log('HOME', homeWrapper.current)
+      if(aboutSection.current) {
+        aboutSection.current.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        })
+      }
+    }, 1000);
+  }
   return (
     <Layout>
-      <HomeWrapper>
+      <HomeWrapper ref={homeWrapper}>
         <TwoColumnGrid>
           <div>
             <HomePageText> With Microbes</HomePageText>
@@ -120,7 +137,7 @@ const Home = () => {
               enter walk 2: future
             </HomePageLinks>
           </HomePageLinksWrapper>
-          <div>
+          <div ref={aboutSection}>
             <HomePageText> About</HomePageText>
           </div>
           <FlexDiv>
