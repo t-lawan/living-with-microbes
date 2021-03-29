@@ -174,7 +174,7 @@ const LoadingPage = props => {
           ) : null}
         </TextWrapper>
 
-        <TopNavbar isOnLoadingPage={true} />
+        {/* <TopNavbar isOnLoadingPage={true} /> */}
       </ContentWrapper>
     </LoadingPageWrapper>
   );

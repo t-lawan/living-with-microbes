@@ -190,6 +190,17 @@ class FutureEnvironment extends Component {
     this.onWindowResize();
   };
 
+  loadError = (url) => {
+
+    if(url.includes('text')){
+      this.setupText();
+    }
+
+    if(url.includes('context')){
+      this.setupBuildings();
+    }
+  }
+
   setupText = () => {
     const loader = new GLTFLoader(this.manager);
     let mesh = new THREE.Object3D();

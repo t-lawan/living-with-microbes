@@ -163,6 +163,7 @@ class NowEnvironment extends Component {
     this.manager.onStart = this.loadStart;
     this.manager.onProgress = this.loadProgressing;
     this.manager.onLoad = this.loadFinished;
+    this.manager.onError = this.loadError;
   };
 
   loadStart = (url, itemsLoaded, itemsTotal) => {
@@ -178,6 +179,20 @@ class NowEnvironment extends Component {
     this.props.hasLoaded();
     this.onWindowResize();
   };
+
+  loadError = (url) => {
+    if(url.includes('data')){
+      this.setupData();
+    }
+
+    if(url.includes('text')){
+      this.setupText();
+    }
+
+    if(url.includes('context')){
+      this.setupBuildings();
+    }
+  }
 
   setupText = () => {
     const loader = new GLTFLoader(this.manager);

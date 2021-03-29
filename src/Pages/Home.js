@@ -57,7 +57,7 @@ export const TwoColumnGrid = styled.div`
   display: grid;
   grid-template-columns: 3fr 5fr;
   grid-column-gap: 1rem;
-  grid-row-gap: 7rem;
+  grid-row-gap: 10rem;
   padding: 1rem;
   @media (max-width: ${size.tabletL}) {
     /* width: 90%; */
@@ -70,7 +70,7 @@ const HomePageLinksWrapper = styled.div`
   flex-direction: row;
   /* width: 60%; */
   justify-content: space-between;
-
+  width: 90%;
   @media (max-width: ${size.tabletL}) {
     /* width: 90%; */
     flex-direction: column;
@@ -109,6 +109,7 @@ const Home = () => {
   return (
     <Layout>
       <HomeWrapper ref={homeWrapper}>
+        <HomePageSection>
         <TwoColumnGrid>
           <div>
             <HomePageText> With Microbes</HomePageText>
@@ -131,12 +132,15 @@ const Home = () => {
           </div>
           <HomePageLinksWrapper>
             <HomePageLinks to={PageURls.NOW.url}>
-              enter walk 1:now
+              enter walk 1: now
             </HomePageLinks>
             <HomePageLinks to={PageURls.FUTURE.url}>
               enter walk 2: future
             </HomePageLinks>
           </HomePageLinksWrapper>
+          </TwoColumnGrid>
+          </HomePageSection>
+          <TwoColumnGrid>
           <div ref={aboutSection}>
             <HomePageText> About</HomePageText>
           </div>
@@ -165,9 +169,9 @@ const Home = () => {
             <HomePageText> Collaborators</HomePageText>
           </div>
           <HomePageTextWrapper>
-            <CollaboratorText>Concept and Design: Ioana Man</CollaboratorText>
+            <CollaboratorText>Concept and design: Ioana Man</CollaboratorText>
             <CollaboratorText>
-              Web experience and Development: Cream Projects and Akinsola
+              Web experience and development: Cream Projects and Akinsola
               Lawanson
             </CollaboratorText>
             <CollaboratorText>
