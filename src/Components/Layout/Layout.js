@@ -18,7 +18,9 @@ const Layout = props => {
         htmlAttributes={{
           lang: "en"
         }}
+        defaultTitle={title}
         title={title}
+        defer={false}
         meta={[
           {
             rel: "canonical",
@@ -35,18 +37,6 @@ const Layout = props => {
           {
             property: `og:description`,
             content: description
-          },
-        //   {
-        //     property: `og:image`,
-        //     content: SharingUrl
-        //   },
-          {
-            property: `og:image:width`,
-            content: `720`
-          },
-          {
-            property: `og:image:height`,
-            content: `720`
           },
           {
             property: `og:type`,
@@ -69,7 +59,17 @@ const Layout = props => {
             content: description
           }
         ]}
-      />
+      >
+       <title itemProp="name" lang="en">{title}</title>
+       <meta name="description" content={description} />
+       <link rel="canonical" href={url} />
+       <meta property="og:type" content="website" />
+       <meta property="og:description" content={description} />
+       <meta property="og:title" content={title} />
+       <meta property="og:url" content={url} />
+       <meta  name="twitter:title" content={title} />
+       <meta  name="twitter:description" content={description} />
+      </Helmet>
       <GlobalStyle />
       <LoadingPage />
       <Main>{props.children}</Main>
