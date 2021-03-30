@@ -109,7 +109,7 @@ const Home = () => {
   return (
     <Layout>
       <HomeWrapper ref={homeWrapper}>
-        <HomePageSection>
+        <HomePageSection isFullscreenInMobile>
         <TwoColumnGrid>
           <div>
             <HomePageText> With Microbes</HomePageText>
