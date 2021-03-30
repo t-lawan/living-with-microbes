@@ -41,7 +41,11 @@ const FlexColumn = styled.div`
   flex-direction: column;
 `
 const LoadingSection = styled.div`
-  padding-top: 4rem;
+  padding-top: 10rem;
+  @media (max-width: ${size.tabletL}) {
+    /* width: 90%; */
+    padding-top: 2rem;
+  }
 `;
 const TextWrapper = styled.div`
   /* width: 60%; */
